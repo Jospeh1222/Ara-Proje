@@ -1,0 +1,105 @@
+
+############################################################
+# FOLD 3 / 4
+############################################################
+Device: cuda
+train segments=10258  test segments=2766  classes=16
+Model parameters: 1,049,984
+Train segments per class: [628, 713, 599, 676, 843, 611, 673, 701, 579, 462, 590, 675, 619, 614, 657, 618]
+Drive saving ENABLED
+  Epoch   1/40 | train loss=2.708 acc=0.122 | lr=0.00100
+  Epoch   2/40 | train loss=2.586 acc=0.170 | lr=0.00099
+  Epoch   3/40 | train loss=2.504 acc=0.196 | lr=0.00099
+  Epoch   4/40 | train loss=2.449 acc=0.212 | lr=0.00098
+  Epoch   5/40 | train loss=2.398 acc=0.235 | lr=0.00096
+  Epoch   6/40 | train loss=2.350 acc=0.254 | lr=0.00095
+  Epoch   7/40 | train loss=2.297 acc=0.273 | lr=0.00093
+  Epoch   8/40 | train loss=2.238 acc=0.299 | lr=0.00090
+  Epoch   9/40 | train loss=2.174 acc=0.327 | lr=0.00088
+  Epoch  10/40 | train loss=2.116 acc=0.346 | lr=0.00085
+  Epoch  11/40 | train loss=2.063 acc=0.366 | lr=0.00082
+  Epoch  12/40 | train loss=2.003 acc=0.388 | lr=0.00079
+  Epoch  13/40 | train loss=1.943 acc=0.414 | lr=0.00076
+  Epoch  14/40 | train loss=1.885 acc=0.437 | lr=0.00073
+  Epoch  15/40 | train loss=1.842 acc=0.454 | lr=0.00069
+  Epoch  16/40 | train loss=1.763 acc=0.487 | lr=0.00065
+  Epoch  17/40 | train loss=1.718 acc=0.504 | lr=0.00062
+  Epoch  18/40 | train loss=1.663 acc=0.516 | lr=0.00058
+  Epoch  19/40 | train loss=1.617 acc=0.540 | lr=0.00054
+  Epoch  20/40 | train loss=1.553 acc=0.558 | lr=0.00050
+  Epoch  21/40 | train loss=1.500 acc=0.580 | lr=0.00046
+  Epoch  22/40 | train loss=1.476 acc=0.596 | lr=0.00042
+  Epoch  23/40 | train loss=1.428 acc=0.612 | lr=0.00038
+  Epoch  24/40 | train loss=1.402 acc=0.618 | lr=0.00035
+  Epoch  25/40 | train loss=1.366 acc=0.636 | lr=0.00031
+  Epoch  26/40 | train loss=1.326 acc=0.643 | lr=0.00027
+  Epoch  27/40 | train loss=1.297 acc=0.660 | lr=0.00024
+  Epoch  28/40 | train loss=1.276 acc=0.664 | lr=0.00021
+  Epoch  29/40 | train loss=1.246 acc=0.681 | lr=0.00018
+  Epoch  30/40 | train loss=1.222 acc=0.684 | lr=0.00015
+  Epoch  31/40 | train loss=1.205 acc=0.692 | lr=0.00012
+  Epoch  32/40 | train loss=1.189 acc=0.699 | lr=0.00010
+  Epoch  33/40 | train loss=1.176 acc=0.703 | lr=0.00007
+  Epoch  34/40 | train loss=1.148 acc=0.717 | lr=0.00005
+  Epoch  35/40 | train loss=1.149 acc=0.716 | lr=0.00004
+  Epoch  36/40 | train loss=1.139 acc=0.719 | lr=0.00002
+  Epoch  37/40 | train loss=1.147 acc=0.723 | lr=0.00001
+  Epoch  38/40 | train loss=1.136 acc=0.721 | lr=0.00001
+  Epoch  39/40 | train loss=1.137 acc=0.725 | lr=0.00000
+  Epoch  40/40 | train loss=1.137 acc=0.724 | lr=0.00000
+
+Evaluating fold 3 on test set...
+
+--- Fold 3 — Segment-level ---
+  accuracy  : 0.3557
+  precision : 0.3498  (macro)
+  recall    : 0.3498  (macro)
+  f1        : 0.3456  (macro)
+  kappa     : 0.3117
+
+  class                   support  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  161      0.270    0.255  0.262
+  beyati                      190      0.274    0.305  0.289
+  buselik                     154      0.436    0.396  0.415
+  hicaz                       152      0.170    0.204  0.186
+  hicazkar                    188      0.405    0.410  0.407
+  hüseyni                     255      0.262    0.173  0.208
+  hüzzam                      174      0.293    0.316  0.304
+  kürdilihicazkar             161      0.376    0.385  0.380
+  mahur                       144      0.364    0.326  0.344
+  muhayyer                     96      0.184    0.146  0.163
+  neva                        230      0.617    0.709  0.660
+  nihavent                    149      0.757    0.879  0.814
+  rast                        152      0.156    0.217  0.181
+  saba                        248      0.569    0.331  0.418
+  segah                       160      0.252    0.250  0.251
+  uşşak                       152      0.212    0.296  0.247
+
+--- Fold 3 — Song-level ---
+  accuracy  : 0.3926
+  precision : 0.3853  (macro)
+  recall    : 0.3872  (macro)
+  f1        : 0.3802  (macro)
+  kappa     : 0.3508
+
+  class                   support  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                   21      0.389    0.333  0.359
+  beyati                       23      0.333    0.391  0.360
+  buselik                      23      0.789    0.652  0.714
+  hicaz                        24      0.208    0.208  0.208
+  hicazkar                     29      0.565    0.448  0.500
+  hüseyni                      22      0.320    0.364  0.340
+  hüzzam                       23      0.333    0.391  0.360
+  kürdilihicazkar              24      0.393    0.458  0.423
+  mahur                        20      0.417    0.250  0.312
+  muhayyer                     15      0.143    0.067  0.091
+  neva                         15      0.500    0.667  0.571
+  nihavent                     23      0.759    0.957  0.846
+  rast                         23      0.172    0.217  0.192
+  saba                         19      0.308    0.211  0.250
+  segah                        22      0.308    0.364  0.333
+  uşşak                        23      0.227    0.217  0.222
+
+Fold 3 results saved -> results/fold3_results.json
