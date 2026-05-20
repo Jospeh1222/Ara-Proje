@@ -1,8 +1,10 @@
-#Her fold için ayrı normalizasyon istatistikleri (mean, std) hesaplar
-#Sadece o foldun TRAIN setini kullanır, test verisi sızmasın diye
+#Her fold icin ayri normalizasyon istatistikleri (mean, std) hesaplar
+#Sadece o foldun TRAIN setini kullanir; val ve test verisi sizmasin diye
 
-#python compute_stats.py 0  (sadece fold 0 için)
-#python compute_stats.py all   (tüm foldlar için)
+#Kullanim:
+#python compute_stats.py 0     -> sadece fold 0 icin
+#python compute_stats.py all   -> tum foldlar icin
+#python compute_stats.py       -> argumansiz da tum foldlar
 
 import sys
 import json
@@ -12,44 +14,50 @@ from tqdm import tqdm
 import config as C
 
 
-#Tek bir fold için istatistikleri hesapla ve JSON'a yaz
+#Tek bir fold icin istatistikleri hesapla ve JSON'a yaz
 def compute_for_fold(fold: int):
+
+    if not C.FOLDS_FILE.exists():
+        raise FileNotFoundError(f"folds.json bulunamadi: {C.FOLDS_FILE}. "
+                                f"Once make_kfolds.py calistir.")
 
     with open(C.FOLDS_FILE, encoding="utf-8") as f:
         data = json.load(f)
-    train_items = data["folds"][fold]["train"] #sadece bu foldun train setini al
 
-    #Her öznitelik için toplam ve kareler toplamı (online varyans hesabı için)
+    #SADECE train kullanilir; val ve test istatistiklere katki saglamaz
+    train_items = data["folds"][fold]["train"]
+    n_val  = len(data["folds"][fold]["val"])
+    n_test = len(data["folds"][fold]["test"])
+
+    print(f"  train={len(train_items)} seg  val={n_val} seg  test={n_test} seg")
+    print(f"  Istatistikler yalnizca TRAIN setinden hesaplaniyor")
+
+    #Her oznitelik icin toplam ve kareler toplami (online varyans hesabi)
     sums   = {"mel": None, "mfcc": None, "chroma": None}
     sumsqs = {"mel": None, "mfcc": None, "chroma": None}
-    n_frames = 0 #toplam zaman frame sayısı
+    n_frames = 0
 
-    #Train setindeki her segment için
     for item in tqdm(train_items, desc=f"Fold {fold}"):
         z = np.load(item["path"])
         T = None
 
-        #Her öznitelik tipi için (mel, mfcc, chroma)
         for key in sums:
-            arr = z[key].astype(np.float64) #hassasiyet için float64
+            arr = z[key].astype(np.float64)
 
-            #İlk segmentte bin sayısına göre dizi başlat
             if sums[key] is None:
                 sums[key]   = np.zeros(arr.shape[0])
                 sumsqs[key] = np.zeros(arr.shape[0])
 
-            #Bu segmentin katkısını topla (her bin için ayrı)
             sums[key]   += arr.sum(axis=1)
             sumsqs[key] += (arr ** 2).sum(axis=1)
             T = arr.shape[1] if T is None else min(T, arr.shape[1])
 
         n_frames += T
 
-    #Mean ve std hesapla, JSON için listele
+    #Mean ve std hesapla
     out = {"n_frames": int(n_frames)}
     for key in sums:
         mean = sums[key] / n_frames
-        #Negatif varyansa karşı küçük epsilon ekle (sayısal kararlılık)
         std  = np.sqrt(np.maximum(sumsqs[key] / n_frames - mean ** 2, 1e-12))
 
         out[f"{key}_mean"] = mean.tolist()
@@ -65,13 +73,10 @@ def compute_for_fold(fold: int):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Kullanim: python compute_stats.py <fold_no|all>")
-        sys.exit(1)
+    #Arguman yoksa veya "all" ise tum foldlar
+    arg = sys.argv[1] if len(sys.argv) >= 2 else "all"
 
-    arg = sys.argv[1]
     if arg == "all":
-        #Tüm foldlar için sırayla hesapla
         for k in range(C.N_FOLDS):
             print(f"\n=== Fold {k} ===")
             compute_for_fold(k)
