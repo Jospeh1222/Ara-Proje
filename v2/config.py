@@ -55,7 +55,7 @@ ATTN_DIM     = 128   #Attention mekanizmasının iç boyutu
 #*************************************************************************
 BATCH_SIZE      = 32
 EPOCHS          = 40     #Sabit epoch sayısı K-fold'da her fold aynı süre eğitilmeli
-LR              = 1e-4   #Başlangıç öğrenme oranı
+LR              = 1e-3   #Başlangıç öğrenme oranı
 WEIGHT_DECAY    = 2e-4
 LABEL_SMOOTHING = 0.05
 GRAD_CLIP       = 5.0
