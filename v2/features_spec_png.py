@@ -1,5 +1,5 @@
 %%writefile features_spec_png.py
-# Ses dosyalarını 30 saniyelik segmentlere böler
+# Ses dosyalarını 20 saniyelik segmentlere böler
 # Her segment için STFT spektrogram PNG olarak kaydeder (viridis colormap)
 # Mel/MFCC/chroma hesaplanmaz
 
