@@ -1,0 +1,484 @@
+
+############################################################
+# MEL-PNG FOLD 0 / 4
+############################################################
+Cihaz: cuda
+train=13264  val=2363  test=4368  sinif=16
+Model parametre sayisi: 1,049,872
+Sinif basina segment: [846, 913, 771, 867, 1022, 906, 850, 917, 754, 615, 671, 848, 792, 835, 849, 808]
+Maksimum epoch: 50  erken durdurma sabri: 7
+
+  Epoch   1/50 | train loss=2.7131 acc=0.1121 | val loss=2.6940 acc=0.1160  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.6092 acc=0.1457 | val loss=2.6116 acc=0.1303  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=2.5417 acc=0.1699 | val loss=2.6541 acc=0.1329  (iyilesme yok: 1/7)
+  Epoch   4/50 | train loss=2.5072 acc=0.1860 | val loss=2.6109 acc=0.1384  <- en iyi (val_loss dustu)
+  Epoch   5/50 | train loss=2.4776 acc=0.1910 | val loss=2.6325 acc=0.1405  (iyilesme yok: 1/7)
+  Epoch   6/50 | train loss=2.4572 acc=0.2000 | val loss=2.6086 acc=0.1435  <- en iyi (val_loss dustu)
+  Epoch   7/50 | train loss=2.4423 acc=0.2076 | val loss=2.5958 acc=0.1507  <- en iyi (val_loss dustu)
+  Epoch   8/50 | train loss=2.4203 acc=0.2147 | val loss=2.5971 acc=0.1388  (iyilesme yok: 1/7)
+  Epoch   9/50 | train loss=2.3966 acc=0.2235 | val loss=2.5803 acc=0.1566  <- en iyi (val_loss dustu)
+  Epoch  10/50 | train loss=2.3696 acc=0.2321 | val loss=2.5758 acc=0.1409  <- en iyi (val_loss dustu)
+  Epoch  11/50 | train loss=2.3430 acc=0.2489 | val loss=2.5751 acc=0.1511  <- en iyi (val_loss dustu)
+  Epoch  12/50 | train loss=2.3099 acc=0.2591 | val loss=2.6126 acc=0.1659  (iyilesme yok: 1/7)
+  Epoch  13/50 | train loss=2.2857 acc=0.2725 | val loss=2.5405 acc=0.1824  <- en iyi (val_loss dustu)
+  Epoch  14/50 | train loss=2.2452 acc=0.2842 | val loss=2.6392 acc=0.1693  (iyilesme yok: 1/7)
+  Epoch  15/50 | train loss=2.2087 acc=0.2961 | val loss=2.6111 acc=0.1625  (iyilesme yok: 2/7)
+  Epoch  16/50 | train loss=2.1844 acc=0.3072 | val loss=2.5787 acc=0.1790  (iyilesme yok: 3/7)
+  Epoch  17/50 | train loss=2.1489 acc=0.3210 | val loss=2.6106 acc=0.1930  (iyilesme yok: 4/7)
+  Epoch  18/50 | train loss=2.1100 acc=0.3335 | val loss=2.5838 acc=0.2146  (iyilesme yok: 5/7)
+  Epoch  19/50 | train loss=2.0722 acc=0.3510 | val loss=2.6541 acc=0.2006  (iyilesme yok: 6/7)
+  Epoch  20/50 | train loss=2.0250 acc=0.3714 | val loss=2.6141 acc=0.1985  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 13 (val_loss=2.5405)
+  En iyi agirliklar geri yuklendi (epoch 13)
+
+Fold 0 test setinde degerlendiriliyor (epoch 13)...
+
+--- MEL-PNG Fold 0 - Segment ---
+  accuracy  : 0.1930
+  precision : 0.1970  (weighted)
+  recall    : 0.1930  (weighted)
+  f1        : 0.1847  (weighted)
+  kappa     : 0.1369
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 227      0.122    0.079  0.096
+  beyati                      286      0.080    0.119  0.096
+  buselik                     247      0.150    0.219  0.178
+  hicaz                       280      0.111    0.032  0.050
+  hicazkar                    314      0.107    0.134  0.119
+  hüseyni                    237      0.119    0.021  0.036
+  hüzzam                     287      0.053    0.017  0.026
+  kürdilihicazkar            283      0.239    0.240  0.240
+  mahur                       229      0.080    0.048  0.060
+  muhayyer                    160      0.070    0.050  0.058
+  neva                        466      0.555    0.410  0.472
+  nihavent                    270      0.581    0.641  0.609
+  rast                        245      0.124    0.392  0.188
+  saba                        347      0.180    0.196  0.188
+  segah                       253      0.143    0.158  0.150
+  uşşak                     237      0.099    0.089  0.093
+
+--- MEL-PNG Fold 0 - Sarki ---
+  accuracy  : 0.1844
+  precision : 0.1806  (weighted)
+  recall    : 0.1844  (weighted)
+  f1        : 0.1674  (weighted)
+  kappa     : 0.1279
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  22      0.182    0.091  0.121
+  beyati                       24      0.021    0.042  0.028
+  buselik                      23      0.286    0.261  0.273
+  hicaz                        24      0.167    0.042  0.067
+  hicazkar                     30      0.080    0.067  0.073
+  hüseyni                     22      0.000    0.000  0.000
+  hüzzam                      23      0.200    0.043  0.071
+  kürdilihicazkar             25      0.259    0.280  0.269
+  mahur                        21      0.000    0.000  0.000
+  muhayyer                     15      0.111    0.067  0.083
+  neva                         16      0.429    0.375  0.400
+  nihavent                     24      0.531    0.708  0.607
+  rast                         24      0.134    0.458  0.208
+  saba                         19      0.129    0.211  0.160
+  segah                        22      0.095    0.091  0.093
+  uşşak                      24      0.294    0.208  0.244
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/results/cnn_mel_fold0_results.json
+
+############################################################
+# MEL-PNG FOLD 1 / 4
+############################################################
+Cihaz: cuda
+train=13849  val=2315  test=3831  sinif=16
+Model parametre sayisi: 1,049,872
+Sinif basina segment: [809, 934, 813, 862, 1119, 935, 900, 908, 750, 619, 924, 898, 795, 947, 842, 794]
+Maksimum epoch: 50  erken durdurma sabri: 7
+
+  Epoch   1/50 | train loss=2.7210 acc=0.1119 | val loss=2.6568 acc=0.1292  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.6261 acc=0.1451 | val loss=2.6048 acc=0.1374  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=2.5755 acc=0.1629 | val loss=2.5738 acc=0.1719  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=2.5359 acc=0.1774 | val loss=2.5776 acc=0.1784  (iyilesme yok: 1/7)
+  Epoch   5/50 | train loss=2.4985 acc=0.1926 | val loss=2.5491 acc=0.1775  <- en iyi (val_loss dustu)
+  Epoch   6/50 | train loss=2.4722 acc=0.2030 | val loss=2.6114 acc=0.1546  (iyilesme yok: 1/7)
+  Epoch   7/50 | train loss=2.4421 acc=0.2183 | val loss=2.5475 acc=0.1737  <- en iyi (val_loss dustu)
+  Epoch   8/50 | train loss=2.4095 acc=0.2284 | val loss=2.6155 acc=0.1689  (iyilesme yok: 1/7)
+  Epoch   9/50 | train loss=2.3832 acc=0.2434 | val loss=2.6063 acc=0.1724  (iyilesme yok: 2/7)
+  Epoch  10/50 | train loss=2.3471 acc=0.2530 | val loss=2.6118 acc=0.1801  (iyilesme yok: 3/7)
+  Epoch  11/50 | train loss=2.3219 acc=0.2620 | val loss=2.5826 acc=0.1650  (iyilesme yok: 4/7)
+  Epoch  12/50 | train loss=2.2792 acc=0.2792 | val loss=2.5963 acc=0.1711  (iyilesme yok: 5/7)
+  Epoch  13/50 | train loss=2.2433 acc=0.2935 | val loss=2.6015 acc=0.1724  (iyilesme yok: 6/7)
+  Epoch  14/50 | train loss=2.1997 acc=0.3122 | val loss=2.5731 acc=0.1840  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 7 (val_loss=2.5475)
+  En iyi agirliklar geri yuklendi (epoch 7)
+
+Fold 1 test setinde degerlendiriliyor (epoch 7)...
+
+--- MEL-PNG Fold 1 - Segment ---
+  accuracy  : 0.1718
+  precision : 0.1504  (weighted)
+  recall    : 0.1718  (weighted)
+  f1        : 0.1441  (weighted)
+  kappa     : 0.1145
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 247      0.098    0.077  0.086
+  beyati                      269      0.260    0.175  0.209
+  buselik                     217      0.107    0.028  0.044
+  hicaz                       267      0.109    0.067  0.083
+  hicazkar                    261      0.033    0.019  0.024
+  hüseyni                    243      0.027    0.012  0.017
+  hüzzam                     274      0.000    0.000  0.000
+  kürdilihicazkar            271      0.128    0.491  0.203
+  mahur                       230      0.188    0.026  0.046
+  muhayyer                    151      0.071    0.046  0.056
+  neva                        172      0.379    0.419  0.398
+  nihavent                    221      0.688    0.846  0.759
+  rast                        239      0.123    0.293  0.174
+  saba                        265      0.042    0.023  0.029
+  segah                       258      0.070    0.101  0.082
+  uşşak                     246      0.205    0.215  0.210
+
+--- MEL-PNG Fold 1 - Sarki ---
+  accuracy  : 0.1944
+  precision : 0.1493  (weighted)
+  recall    : 0.1944  (weighted)
+  f1        : 0.1530  (weighted)
+  kappa     : 0.1384
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  21      0.100    0.095  0.098
+  beyati                       24      0.300    0.125  0.176
+  buselik                      23      0.000    0.000  0.000
+  hicaz                        24      0.000    0.000  0.000
+  hicazkar                     30      0.059    0.033  0.043
+  hüseyni                     22      0.000    0.000  0.000
+  hüzzam                      23      0.000    0.000  0.000
+  kürdilihicazkar             24      0.140    0.625  0.229
+  mahur                        20      0.000    0.000  0.000
+  muhayyer                     15      0.200    0.067  0.100
+  neva                         16      0.320    0.500  0.390
+  nihavent                     24      0.719    0.958  0.821
+  rast                         24      0.102    0.250  0.145
+  saba                         19      0.000    0.000  0.000
+  segah                        22      0.074    0.091  0.082
+  uşşak                      24      0.381    0.333  0.356
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/results/cnn_mel_fold1_results.json
+
+############################################################
+# MEL-PNG FOLD 2 / 4
+############################################################
+Cihaz: cuda
+train=13709  val=2520  test=3766  sinif=16
+Model parametre sayisi: 1,049,872
+Sinif basina segment: [847, 1016, 806, 881, 1048, 819, 905, 911, 744, 600, 850, 836, 788, 999, 859, 800]
+Maksimum epoch: 50  erken durdurma sabri: 7
+
+  Epoch   1/50 | train loss=2.7306 acc=0.1068 | val loss=2.6019 acc=0.1794  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.6579 acc=0.1355 | val loss=2.5677 acc=0.1825  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=2.6048 acc=0.1504 | val loss=2.5061 acc=0.1996  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=2.5611 acc=0.1641 | val loss=2.4948 acc=0.2155  <- en iyi (val_loss dustu)
+  Epoch   5/50 | train loss=2.5322 acc=0.1752 | val loss=2.4734 acc=0.2238  <- en iyi (val_loss dustu)
+  Epoch   6/50 | train loss=2.5039 acc=0.1881 | val loss=2.4427 acc=0.2250  <- en iyi (val_loss dustu)
+  Epoch   7/50 | train loss=2.4754 acc=0.1949 | val loss=2.4776 acc=0.2028  (iyilesme yok: 1/7)
+  Epoch   8/50 | train loss=2.4546 acc=0.2083 | val loss=2.4610 acc=0.2083  (iyilesme yok: 2/7)
+  Epoch   9/50 | train loss=2.4293 acc=0.2207 | val loss=2.4426 acc=0.2317  <- en iyi (val_loss dustu)
+  Epoch  10/50 | train loss=2.4054 acc=0.2229 | val loss=2.4296 acc=0.2365  <- en iyi (val_loss dustu)
+  Epoch  11/50 | train loss=2.3742 acc=0.2421 | val loss=2.4461 acc=0.2290  (iyilesme yok: 1/7)
+  Epoch  12/50 | train loss=2.3422 acc=0.2546 | val loss=2.4716 acc=0.2175  (iyilesme yok: 2/7)
+  Epoch  13/50 | train loss=2.3110 acc=0.2728 | val loss=2.3759 acc=0.2389  <- en iyi (val_loss dustu)
+  Epoch  14/50 | train loss=2.2763 acc=0.2869 | val loss=2.4236 acc=0.2206  (iyilesme yok: 1/7)
+  Epoch  15/50 | train loss=2.2323 acc=0.2996 | val loss=2.3662 acc=0.2667  <- en iyi (val_loss dustu)
+  Epoch  16/50 | train loss=2.1925 acc=0.3229 | val loss=2.3581 acc=0.2544  <- en iyi (val_loss dustu)
+  Epoch  17/50 | train loss=2.1470 acc=0.3355 | val loss=2.3799 acc=0.2806  (iyilesme yok: 1/7)
+  Epoch  18/50 | train loss=2.1140 acc=0.3514 | val loss=2.3576 acc=0.2663  <- en iyi (val_loss dustu)
+  Epoch  19/50 | train loss=2.0675 acc=0.3663 | val loss=2.3724 acc=0.2893  (iyilesme yok: 1/7)
+  Epoch  20/50 | train loss=2.0239 acc=0.3843 | val loss=2.3561 acc=0.2988  <- en iyi (val_loss dustu)
+  Epoch  21/50 | train loss=1.9658 acc=0.4099 | val loss=2.2488 acc=0.3405  <- en iyi (val_loss dustu)
+  Epoch  22/50 | train loss=1.9145 acc=0.4221 | val loss=2.2861 acc=0.3393  (iyilesme yok: 1/7)
+  Epoch  23/50 | train loss=1.8653 acc=0.4456 | val loss=2.2965 acc=0.3258  (iyilesme yok: 2/7)
+  Epoch  24/50 | train loss=1.8119 acc=0.4687 | val loss=2.2234 acc=0.3373  <- en iyi (val_loss dustu)
+  Epoch  25/50 | train loss=1.7478 acc=0.4864 | val loss=2.2863 acc=0.3373  (iyilesme yok: 1/7)
+  Epoch  26/50 | train loss=1.6957 acc=0.5060 | val loss=2.2389 acc=0.3675  (iyilesme yok: 2/7)
+  Epoch  27/50 | train loss=1.6444 acc=0.5260 | val loss=2.1574 acc=0.3833  <- en iyi (val_loss dustu)
+  Epoch  28/50 | train loss=1.5980 acc=0.5428 | val loss=2.2623 acc=0.3496  (iyilesme yok: 1/7)
+  Epoch  29/50 | train loss=1.5284 acc=0.5759 | val loss=2.1655 acc=0.3778  (iyilesme yok: 2/7)
+  Epoch  30/50 | train loss=1.4933 acc=0.5777 | val loss=2.2245 acc=0.3647  (iyilesme yok: 3/7)
+  Epoch  31/50 | train loss=1.4374 acc=0.6028 | val loss=2.2642 acc=0.3611  (iyilesme yok: 4/7)
+  Epoch  32/50 | train loss=1.3934 acc=0.6210 | val loss=2.2422 acc=0.3750  (iyilesme yok: 5/7)
+  Epoch  33/50 | train loss=1.3495 acc=0.6409 | val loss=2.1856 acc=0.3972  (iyilesme yok: 6/7)
+  Epoch  34/50 | train loss=1.2945 acc=0.6612 | val loss=2.1962 acc=0.3813  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 27 (val_loss=2.1574)
+  En iyi agirliklar geri yuklendi (epoch 27)
+
+Fold 2 test setinde degerlendiriliyor (epoch 27)...
+
+--- MEL-PNG Fold 2 - Segment ---
+  accuracy  : 0.3741
+  precision : 0.3927  (weighted)
+  recall    : 0.3741  (weighted)
+  f1        : 0.3727  (weighted)
+  kappa     : 0.3305
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 218      0.172    0.399  0.240
+  beyati                      207      0.161    0.121  0.138
+  buselik                     230      0.494    0.339  0.402
+  hicaz                       254      0.268    0.386  0.316
+  hicazkar                    380      0.578    0.576  0.577
+  hüseyni                    247      0.234    0.174  0.200
+  hüzzam                     230      0.438    0.200  0.275
+  kürdilihicazkar            254      0.440    0.591  0.504
+  mahur                       220      0.351    0.241  0.286
+  muhayyer                    161      0.168    0.199  0.182
+  neva                        166      0.372    0.404  0.387
+  nihavent                    286      0.844    0.888  0.865
+  rast                        236      0.431    0.360  0.393
+  saba                        203      0.467    0.276  0.347
+  segah                       233      0.211    0.227  0.219
+  uşşak                     241      0.346    0.261  0.298
+
+--- MEL-PNG Fold 2 - Sarki ---
+  accuracy  : 0.4278
+  precision : 0.4664  (weighted)
+  recall    : 0.4278  (weighted)
+  f1        : 0.4263  (weighted)
+  kappa     : 0.3889
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  21      0.190    0.524  0.278
+  beyati                       23      0.235    0.174  0.200
+  buselik                      23      0.733    0.478  0.579
+  hicaz                        24      0.406    0.542  0.464
+  hicazkar                     30      0.655    0.633  0.644
+  hüseyni                     22      0.364    0.182  0.242
+  hüzzam                      23      0.625    0.217  0.323
+  kürdilihicazkar             24      0.531    0.708  0.607
+  mahur                        20      0.417    0.250  0.312
+  muhayyer                     15      0.263    0.333  0.294
+  neva                         16      0.444    0.500  0.471
+  nihavent                     24      0.846    0.917  0.880
+  rast                         24      0.500    0.417  0.455
+  saba                         19      0.600    0.316  0.414
+  segah                        22      0.240    0.273  0.255
+  uşşak                      23      0.238    0.217  0.227
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/results/cnn_mel_fold2_results.json
+
+############################################################
+# MEL-PNG FOLD 3 / 4
+############################################################
+Cihaz: cuda
+train=13645  val=2335  test=4015  sinif=16
+Model parametre sayisi: 1,049,872
+Sinif basina segment: [841, 913, 791, 866, 1085, 808, 888, 917, 757, 591, 914, 879, 804, 912, 850, 829]
+Maksimum epoch: 50  erken durdurma sabri: 7
+
+  Epoch   1/50 | train loss=2.7214 acc=0.1129 | val loss=2.7667 acc=0.1195  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.6300 acc=0.1486 | val loss=2.6445 acc=0.1143  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=2.5677 acc=0.1632 | val loss=2.6258 acc=0.1567  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=2.5226 acc=0.1823 | val loss=2.6123 acc=0.1580  <- en iyi (val_loss dustu)
+  Epoch   5/50 | train loss=2.4913 acc=0.1896 | val loss=2.6193 acc=0.1632  (iyilesme yok: 1/7)
+  Epoch   6/50 | train loss=2.4686 acc=0.2013 | val loss=2.5531 acc=0.1713  <- en iyi (val_loss dustu)
+  Epoch   7/50 | train loss=2.4371 acc=0.2143 | val loss=2.5594 acc=0.1645  (iyilesme yok: 1/7)
+  Epoch   8/50 | train loss=2.4098 acc=0.2213 | val loss=2.5478 acc=0.1700  <- en iyi (val_loss dustu)
+  Epoch   9/50 | train loss=2.3905 acc=0.2329 | val loss=2.5467 acc=0.1782  <- en iyi (val_loss dustu)
+  Epoch  10/50 | train loss=2.3591 acc=0.2502 | val loss=2.5664 acc=0.1782  (iyilesme yok: 1/7)
+  Epoch  11/50 | train loss=2.3279 acc=0.2601 | val loss=2.5275 acc=0.2056  <- en iyi (val_loss dustu)
+  Epoch  12/50 | train loss=2.2869 acc=0.2756 | val loss=2.5168 acc=0.2154  <- en iyi (val_loss dustu)
+  Epoch  13/50 | train loss=2.2572 acc=0.2918 | val loss=2.5234 acc=0.2086  (iyilesme yok: 1/7)
+  Epoch  14/50 | train loss=2.2181 acc=0.3079 | val loss=2.4856 acc=0.2257  <- en iyi (val_loss dustu)
+  Epoch  15/50 | train loss=2.1747 acc=0.3252 | val loss=2.4887 acc=0.2150  (iyilesme yok: 1/7)
+  Epoch  16/50 | train loss=2.1334 acc=0.3398 | val loss=2.4758 acc=0.2454  <- en iyi (val_loss dustu)
+  Epoch  17/50 | train loss=2.0850 acc=0.3579 | val loss=2.4066 acc=0.2557  <- en iyi (val_loss dustu)
+  Epoch  18/50 | train loss=2.0319 acc=0.3802 | val loss=2.4489 acc=0.2690  (iyilesme yok: 1/7)
+  Epoch  19/50 | train loss=1.9844 acc=0.3988 | val loss=2.5422 acc=0.2548  (iyilesme yok: 2/7)
+  Epoch  20/50 | train loss=1.9426 acc=0.4196 | val loss=2.3983 acc=0.2749  <- en iyi (val_loss dustu)
+  Epoch  21/50 | train loss=1.8763 acc=0.4410 | val loss=2.3611 acc=0.3058  <- en iyi (val_loss dustu)
+  Epoch  22/50 | train loss=1.8437 acc=0.4529 | val loss=2.3882 acc=0.2946  (iyilesme yok: 1/7)
+  Epoch  23/50 | train loss=1.7888 acc=0.4761 | val loss=2.3228 acc=0.3268  <- en iyi (val_loss dustu)
+  Epoch  24/50 | train loss=1.7301 acc=0.4993 | val loss=2.3423 acc=0.3221  (iyilesme yok: 1/7)
+  Epoch  25/50 | train loss=1.6819 acc=0.5157 | val loss=2.3682 acc=0.3199  (iyilesme yok: 2/7)
+  Epoch  26/50 | train loss=1.6276 acc=0.5314 | val loss=2.3304 acc=0.3392  (iyilesme yok: 3/7)
+  Epoch  27/50 | train loss=1.5821 acc=0.5557 | val loss=2.2584 acc=0.3366  <- en iyi (val_loss dustu)
+  Epoch  28/50 | train loss=1.5204 acc=0.5833 | val loss=2.3004 acc=0.3542  (iyilesme yok: 1/7)
+  Epoch  29/50 | train loss=1.4726 acc=0.5971 | val loss=2.2754 acc=0.3786  (iyilesme yok: 2/7)
+  Epoch  30/50 | train loss=1.4120 acc=0.6257 | val loss=2.3074 acc=0.3580  (iyilesme yok: 3/7)
+  Epoch  31/50 | train loss=1.3687 acc=0.6334 | val loss=2.3680 acc=0.3520  (iyilesme yok: 4/7)
+  Epoch  32/50 | train loss=1.3183 acc=0.6571 | val loss=2.3127 acc=0.3542  (iyilesme yok: 5/7)
+  Epoch  33/50 | train loss=1.2860 acc=0.6677 | val loss=2.3003 acc=0.3670  (iyilesme yok: 6/7)
+  Epoch  34/50 | train loss=1.2393 acc=0.6846 | val loss=2.2757 acc=0.3799  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 27 (val_loss=2.2584)
+  En iyi agirliklar geri yuklendi (epoch 27)
+
+Fold 3 test setinde degerlendiriliyor (epoch 27)...
+
+--- MEL-PNG Fold 3 - Segment ---
+  accuracy  : 0.3582
+  precision : 0.3885  (weighted)
+  recall    : 0.3582  (weighted)
+  f1        : 0.3544  (weighted)
+  kappa     : 0.3148
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 238      0.467    0.324  0.382
+  beyati                      279      0.263    0.204  0.230
+  buselik                     227      0.219    0.379  0.278
+  hicaz                       251      0.277    0.227  0.249
+  hicazkar                    330      0.459    0.342  0.392
+  hüseyni                    338      0.425    0.266  0.327
+  hüzzam                     251      0.283    0.331  0.305
+  kürdilihicazkar            244      0.410    0.422  0.416
+  mahur                       208      0.274    0.591  0.374
+  muhayyer                    162      0.391    0.111  0.173
+  neva                        252      0.620    0.349  0.447
+  nihavent                    242      0.811    0.818  0.815
+  rast                        229      0.231    0.271  0.249
+  saba                        292      0.593    0.479  0.530
+  segah                       260      0.228    0.515  0.316
+  uşşak                     212      0.148    0.042  0.066
+
+--- MEL-PNG Fold 3 - Sarki ---
+  accuracy  : 0.4212
+  precision : 0.4677  (weighted)
+  recall    : 0.4212  (weighted)
+  f1        : 0.4114  (weighted)
+  kappa     : 0.3812
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  21      0.615    0.381  0.471
+  beyati                       23      0.300    0.261  0.279
+  buselik                      23      0.333    0.522  0.407
+  hicaz                        24      0.400    0.250  0.308
+  hicazkar                     29      0.615    0.552  0.582
+  hüseyni                     22      0.714    0.227  0.345
+  hüzzam                      23      0.455    0.435  0.444
+  kürdilihicazkar             24      0.483    0.583  0.528
+  mahur                        20      0.342    0.650  0.448
+  muhayyer                     15      0.500    0.133  0.211
+  neva                         15      0.833    0.333  0.476
+  nihavent                     23      0.760    0.826  0.792
+  rast                         23      0.321    0.391  0.353
+  saba                         19      0.533    0.421  0.471
+  segah                        22      0.220    0.591  0.321
+  uşşak                      23      0.167    0.043  0.069
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/results/cnn_mel_fold3_results.json
+
+############################################################
+# MEL-PNG FOLD 4 / 4
+############################################################
+Cihaz: cuda
+train=13677  val=2303  test=4015  sinif=16
+Model parametre sayisi: 1,049,872
+Sinif basina segment: [787, 875, 780, 880, 1097, 943, 900, 897, 755, 535, 945, 869, 799, 981, 852, 782]
+Maksimum epoch: 50  erken durdurma sabri: 7
+
+  Epoch   1/50 | train loss=2.7056 acc=0.1214 | val loss=2.6592 acc=0.1172  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.5951 acc=0.1584 | val loss=2.6504 acc=0.1585  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=2.5484 acc=0.1773 | val loss=2.5668 acc=0.1637  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=2.5074 acc=0.1875 | val loss=2.5470 acc=0.1767  <- en iyi (val_loss dustu)
+  Epoch   5/50 | train loss=2.4829 acc=0.2023 | val loss=2.5165 acc=0.1928  <- en iyi (val_loss dustu)
+  Epoch   6/50 | train loss=2.4560 acc=0.2125 | val loss=2.5253 acc=0.1919  (iyilesme yok: 1/7)
+  Epoch   7/50 | train loss=2.4260 acc=0.2294 | val loss=2.4827 acc=0.2006  <- en iyi (val_loss dustu)
+  Epoch   8/50 | train loss=2.3919 acc=0.2450 | val loss=2.4979 acc=0.2054  (iyilesme yok: 1/7)
+  Epoch   9/50 | train loss=2.3629 acc=0.2552 | val loss=2.4388 acc=0.2271  <- en iyi (val_loss dustu)
+  Epoch  10/50 | train loss=2.3298 acc=0.2653 | val loss=2.4094 acc=0.2575  <- en iyi (val_loss dustu)
+  Epoch  11/50 | train loss=2.2853 acc=0.2854 | val loss=2.3934 acc=0.2614  <- en iyi (val_loss dustu)
+  Epoch  12/50 | train loss=2.2423 acc=0.3047 | val loss=2.3716 acc=0.2710  <- en iyi (val_loss dustu)
+  Epoch  13/50 | train loss=2.2030 acc=0.3167 | val loss=2.3624 acc=0.2718  <- en iyi (val_loss dustu)
+  Epoch  14/50 | train loss=2.1413 acc=0.3463 | val loss=2.3375 acc=0.3009  <- en iyi (val_loss dustu)
+  Epoch  15/50 | train loss=2.0880 acc=0.3619 | val loss=2.3359 acc=0.3000  <- en iyi (val_loss dustu)
+  Epoch  16/50 | train loss=2.0285 acc=0.3878 | val loss=2.3073 acc=0.3235  <- en iyi (val_loss dustu)
+  Epoch  17/50 | train loss=1.9730 acc=0.4086 | val loss=2.2330 acc=0.3465  <- en iyi (val_loss dustu)
+  Epoch  18/50 | train loss=1.9098 acc=0.4366 | val loss=2.2522 acc=0.3456  (iyilesme yok: 1/7)
+  Epoch  19/50 | train loss=1.8628 acc=0.4538 | val loss=2.2040 acc=0.3817  <- en iyi (val_loss dustu)
+  Epoch  20/50 | train loss=1.7892 acc=0.4840 | val loss=2.1735 acc=0.3817  <- en iyi (val_loss dustu)
+  Epoch  21/50 | train loss=1.7413 acc=0.4935 | val loss=2.1598 acc=0.3678  <- en iyi (val_loss dustu)
+  Epoch  22/50 | train loss=1.6799 acc=0.5203 | val loss=2.1736 acc=0.3817  (iyilesme yok: 1/7)
+  Epoch  23/50 | train loss=1.6324 acc=0.5340 | val loss=2.1914 acc=0.3943  (iyilesme yok: 2/7)
+  Epoch  24/50 | train loss=1.5632 acc=0.5601 | val loss=2.2227 acc=0.3812  (iyilesme yok: 3/7)
+  Epoch  25/50 | train loss=1.5179 acc=0.5829 | val loss=2.1498 acc=0.4077  <- en iyi (val_loss dustu)
+  Epoch  26/50 | train loss=1.4640 acc=0.5939 | val loss=2.2257 acc=0.4238  (iyilesme yok: 1/7)
+  Epoch  27/50 | train loss=1.4242 acc=0.6140 | val loss=2.2056 acc=0.4099  (iyilesme yok: 2/7)
+  Epoch  28/50 | train loss=1.3747 acc=0.6299 | val loss=2.1584 acc=0.4264  (iyilesme yok: 3/7)
+  Epoch  29/50 | train loss=1.3324 acc=0.6523 | val loss=2.2653 acc=0.3934  (iyilesme yok: 4/7)
+  Epoch  30/50 | train loss=1.2925 acc=0.6588 | val loss=2.1901 acc=0.4290  (iyilesme yok: 5/7)
+  Epoch  31/50 | train loss=1.2556 acc=0.6810 | val loss=2.1893 acc=0.4147  (iyilesme yok: 6/7)
+  Epoch  32/50 | train loss=1.2160 acc=0.6942 | val loss=2.2989 acc=0.4155  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 25 (val_loss=2.1498)
+  En iyi agirliklar geri yuklendi (epoch 25)
+
+Fold 4 test setinde degerlendiriliyor (epoch 25)...
+
+--- MEL-PNG Fold 4 - Segment ---
+  accuracy  : 0.3487
+  precision : 0.3678  (weighted)
+  recall    : 0.3487  (weighted)
+  f1        : 0.3409  (weighted)
+  kappa     : 0.3053
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 279      0.343    0.215  0.264
+  beyati                      350      0.146    0.074  0.098
+  buselik                     241      0.278    0.332  0.302
+  hicaz                       224      0.225    0.429  0.295
+  hicazkar                    296      0.558    0.470  0.510
+  hüseyni                    257      0.158    0.339  0.216
+  hüzzam                     264      0.295    0.314  0.305
+  kürdilihicazkar            282      0.477    0.252  0.329
+  mahur                       222      0.446    0.486  0.466
+  muhayyer                    218      0.248    0.165  0.198
+  neva                        195      0.442    0.215  0.290
+  nihavent                    252      0.742    0.960  0.837
+  rast                        232      0.580    0.220  0.319
+  saba                        213      0.471    0.606  0.530
+  segah                       246      0.295    0.350  0.320
+  uşşak                     244      0.249    0.262  0.255
+
+--- MEL-PNG Fold 4 - Sarki ---
+  accuracy  : 0.4323
+  precision : 0.4661  (weighted)
+  recall    : 0.4323  (weighted)
+  f1        : 0.4262  (weighted)
+  kappa     : 0.3935
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  21      0.467    0.333  0.389
+  beyati                       23      0.154    0.087  0.111
+  buselik                      23      0.375    0.391  0.383
+  hicaz                        24      0.262    0.458  0.333
+  hicazkar                     29      0.762    0.552  0.640
+  hüseyni                     21      0.200    0.476  0.282
+  hüzzam                      23      0.375    0.391  0.383
+  kürdilihicazkar             24      0.467    0.292  0.359
+  mahur                        20      0.765    0.650  0.703
+  muhayyer                     15      0.250    0.133  0.174
+  neva                         15      0.429    0.200  0.273
+  nihavent                     23      0.742    1.000  0.852
+  rast                         23      0.750    0.261  0.387
+  saba                         19      0.500    0.737  0.596
+  segah                        21      0.400    0.476  0.435
+  uşşak                      23      0.421    0.348  0.381
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/results/cnn_mel_fold4_results.json
