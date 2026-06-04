@@ -1,0 +1,627 @@
+
+############################################################
+# CNN FOLD 0 / 4
+############################################################
+Cihaz: cuda
+train=19175  val=3148  test=5879  sinif=12
+Model parametre sayisi: 4,781,068
+Sinif basina segment: [1306, 958, 1057, 1395, 1165, 1088, 1188, 1132, 1010, 1372, 1167, 6337]
+Maksimum epoch: 100  erken durdurma sabri: 15
+
+  Epoch   1/100 | train loss=2.2250 acc=0.0835 | val loss=2.1230 acc=0.0734  <- en iyi (val_loss dustu)
+  Epoch   2/100 | train loss=2.1795 acc=0.0966 | val loss=2.0915 acc=0.0785  <- en iyi (val_loss dustu)
+  Epoch   3/100 | train loss=2.1425 acc=0.1135 | val loss=2.0512 acc=0.1055  <- en iyi (val_loss dustu)
+  Epoch   4/100 | train loss=2.0930 acc=0.1329 | val loss=1.9907 acc=0.1315  <- en iyi (val_loss dustu)
+  Epoch   5/100 | train loss=2.0422 acc=0.1527 | val loss=1.9711 acc=0.1414  <- en iyi (val_loss dustu)
+  Epoch   6/100 | train loss=1.9860 acc=0.1706 | val loss=1.9060 acc=0.1499  <- en iyi (val_loss dustu)
+  Epoch   7/100 | train loss=1.9360 acc=0.1955 | val loss=1.8660 acc=0.1607  <- en iyi (val_loss dustu)
+  Epoch   8/100 | train loss=1.8819 acc=0.2141 | val loss=1.8501 acc=0.1788  <- en iyi (val_loss dustu)
+  Epoch   9/100 | train loss=1.8259 acc=0.2342 | val loss=1.7402 acc=0.2001  <- en iyi (val_loss dustu)
+  Epoch  10/100 | train loss=1.7748 acc=0.2502 | val loss=1.7165 acc=0.1922  <- en iyi (val_loss dustu)
+  Epoch  11/100 | train loss=1.7231 acc=0.2699 | val loss=1.7277 acc=0.2154  (iyilesme yok: 1/15)
+  Epoch  12/100 | train loss=1.6721 acc=0.2849 | val loss=1.6255 acc=0.2408  <- en iyi (val_loss dustu)
+  Epoch  13/100 | train loss=1.6146 acc=0.3025 | val loss=1.4947 acc=0.2846  <- en iyi (val_loss dustu)
+  Epoch  14/100 | train loss=1.5761 acc=0.3157 | val loss=1.4800 acc=0.2856  <- en iyi (val_loss dustu)
+  Epoch  15/100 | train loss=1.5327 acc=0.3271 | val loss=1.4529 acc=0.3110  <- en iyi (val_loss dustu)
+  Epoch  16/100 | train loss=1.4912 acc=0.3402 | val loss=1.3702 acc=0.3536  <- en iyi (val_loss dustu)
+  Epoch  17/100 | train loss=1.4488 acc=0.3527 | val loss=1.3480 acc=0.3847  <- en iyi (val_loss dustu)
+  Epoch  18/100 | train loss=1.4243 acc=0.3668 | val loss=1.4398 acc=0.3113  (iyilesme yok: 1/15)
+  Epoch  19/100 | train loss=1.3783 acc=0.3825 | val loss=1.5212 acc=0.2853  (iyilesme yok: 2/15)
+  Epoch  20/100 | train loss=1.3535 acc=0.3919 | val loss=1.3454 acc=0.3389  <- en iyi (val_loss dustu)
+  Epoch  21/100 | train loss=1.3185 acc=0.3948 | val loss=1.3632 acc=0.4079  (iyilesme yok: 1/15)
+  Epoch  22/100 | train loss=1.2923 acc=0.4120 | val loss=1.3544 acc=0.3529  (iyilesme yok: 2/15)
+  Epoch  23/100 | train loss=1.2465 acc=0.4225 | val loss=1.2710 acc=0.3904  <- en iyi (val_loss dustu)
+  Epoch  24/100 | train loss=1.2170 acc=0.4405 | val loss=1.3568 acc=0.3447  (iyilesme yok: 1/15)
+  Epoch  25/100 | train loss=1.1744 acc=0.4521 | val loss=1.2814 acc=0.4238  (iyilesme yok: 2/15)
+  Epoch  26/100 | train loss=1.1370 acc=0.4674 | val loss=1.2212 acc=0.4263  <- en iyi (val_loss dustu)
+  Epoch  27/100 | train loss=1.1138 acc=0.4742 | val loss=1.4370 acc=0.3685  (iyilesme yok: 1/15)
+  Epoch  28/100 | train loss=1.0697 acc=0.4936 | val loss=1.2140 acc=0.4330  <- en iyi (val_loss dustu)
+  Epoch  29/100 | train loss=1.0191 acc=0.5142 | val loss=1.3153 acc=0.3936  (iyilesme yok: 1/15)
+  Epoch  30/100 | train loss=0.9883 acc=0.5244 | val loss=1.2154 acc=0.4428  (iyilesme yok: 2/15)
+  Epoch  31/100 | train loss=0.9572 acc=0.5364 | val loss=1.3033 acc=0.4133  (iyilesme yok: 3/15)
+  Epoch  32/100 | train loss=0.9222 acc=0.5502 | val loss=1.1637 acc=0.4622  <- en iyi (val_loss dustu)
+  Epoch  33/100 | train loss=0.8779 acc=0.5679 | val loss=1.1771 acc=0.4539  (iyilesme yok: 1/15)
+  Epoch  34/100 | train loss=0.8331 acc=0.5856 | val loss=1.2383 acc=0.4828  (iyilesme yok: 2/15)
+  Epoch  35/100 | train loss=0.8039 acc=0.5998 | val loss=1.2180 acc=0.4479  (iyilesme yok: 3/15)
+  Epoch  36/100 | train loss=0.7692 acc=0.6178 | val loss=1.2366 acc=0.4841  (iyilesme yok: 4/15)
+  Epoch  37/100 | train loss=0.7289 acc=0.6307 | val loss=1.1711 acc=0.4606  (iyilesme yok: 5/15)
+  Epoch  38/100 | train loss=0.7021 acc=0.6407 | val loss=1.1671 acc=0.4616  (iyilesme yok: 6/15)
+  Epoch  39/100 | train loss=0.6748 acc=0.6578 | val loss=1.1570 acc=0.4825  <- en iyi (val_loss dustu)
+  Epoch  40/100 | train loss=0.6379 acc=0.6756 | val loss=1.1310 acc=0.5238  <- en iyi (val_loss dustu)
+  Epoch  41/100 | train loss=0.6063 acc=0.6914 | val loss=1.0709 acc=0.5727  <- en iyi (val_loss dustu)
+  Epoch  42/100 | train loss=0.5844 acc=0.7034 | val loss=1.1208 acc=0.5353  (iyilesme yok: 1/15)
+  Epoch  43/100 | train loss=0.5582 acc=0.7136 | val loss=1.1657 acc=0.5422  (iyilesme yok: 2/15)
+  Epoch  44/100 | train loss=0.5379 acc=0.7308 | val loss=1.0868 acc=0.5997  (iyilesme yok: 3/15)
+  Epoch  45/100 | train loss=0.5087 acc=0.7454 | val loss=1.1015 acc=0.5705  (iyilesme yok: 4/15)
+  Epoch  46/100 | train loss=0.4927 acc=0.7489 | val loss=1.1534 acc=0.5708  (iyilesme yok: 5/15)
+  Epoch  47/100 | train loss=0.4764 acc=0.7603 | val loss=1.1699 acc=0.5762  (iyilesme yok: 6/15)
+  Epoch  48/100 | train loss=0.4552 acc=0.7734 | val loss=1.1250 acc=0.5858  (iyilesme yok: 7/15)
+  Epoch  49/100 | train loss=0.4307 acc=0.7854 | val loss=1.1461 acc=0.5918  (iyilesme yok: 8/15)
+  Epoch  50/100 | train loss=0.4281 acc=0.7875 | val loss=1.2043 acc=0.5667  (iyilesme yok: 9/15)
+  Epoch  51/100 | train loss=0.4096 acc=0.8034 | val loss=1.1015 acc=0.5858  (iyilesme yok: 10/15)
+  Epoch  52/100 | train loss=0.3928 acc=0.8134 | val loss=1.1272 acc=0.6090  (iyilesme yok: 11/15)
+  Epoch  53/100 | train loss=0.3785 acc=0.8226 | val loss=1.0800 acc=0.5972  (iyilesme yok: 12/15)
+  Epoch  54/100 | train loss=0.3656 acc=0.8275 | val loss=1.1137 acc=0.6172  (iyilesme yok: 13/15)
+  Epoch  55/100 | train loss=0.3578 acc=0.8363 | val loss=1.1888 acc=0.6083  (iyilesme yok: 14/15)
+  Epoch  56/100 | train loss=0.3505 acc=0.8409 | val loss=1.1103 acc=0.6261  (iyilesme yok: 15/15)
+
+  Erken durdurma: val_loss 15 epoch boyunca iyilesmedi.
+  En iyi model: epoch 41 (val_loss=1.0709)
+  En iyi agirliklar geri yuklendi (epoch 41)
+/usr/local/lib/python3.12/dist-packages/torch/nn/modules/rnn.py:1449: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at /pytorch/aten/src/ATen/native/cudnn/RNN.cpp:1479.)
+  result = _VF.gru(
+SWA ağırlıkları uygulandı
+
+Fold 0 test setinde degerlendiriliyor (epoch 41)...
+
+--- CNN Fold 0 - Segment ---
+  accuracy  : 0.5270
+  precision : 0.6318  (weighted)
+  recall    : 0.5270  (weighted)
+  f1        : 0.5313  (weighted)
+  kappa     : 0.4680
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 292      0.360    0.627  0.457
+  buselik                     295      0.443    0.492  0.466
+  hicaz                       326      0.407    0.574  0.476
+  hicazkar                    382      0.596    0.699  0.643
+  hüzzam                     298      0.469    0.554  0.508
+  kürdilihicazkar            352      0.479    0.767  0.590
+  mahur                       378      0.360    0.405  0.381
+  nihavent                    307      0.763    0.840  0.800
+  rast                        315      0.268    0.552  0.361
+  saba                        323      0.649    0.734  0.689
+  segah                       332      0.438    0.617  0.512
+  dugah                      2279      0.878    0.375  0.525
+
+--- CNN Fold 0 - Sarki ---
+  accuracy  : 0.6273
+  precision : 0.7082  (weighted)
+  recall    : 0.6273  (weighted)
+  f1        : 0.6226  (weighted)
+  kappa     : 0.5823
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  26      0.524    0.846  0.647
+  buselik                      23      0.750    0.652  0.698
+  hicaz                        24      0.630    0.708  0.667
+  hicazkar                     30      0.735    0.833  0.781
+  hüzzam                      23      0.633    0.826  0.717
+  kürdilihicazkar             25      0.500    0.920  0.648
+  mahur                        33      0.536    0.455  0.492
+  nihavent                     24      0.778    0.875  0.824
+  rast                         24      0.302    0.667  0.416
+  saba                         23      0.741    0.870  0.800
+  segah                        26      0.559    0.731  0.633
+  dugah                       159      0.889    0.403  0.554
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi_3/results_m3/cnn_fold0_results.json
+
+############################################################
+# CNN FOLD 1 / 4
+############################################################
+Cihaz: cuda
+train=18918  val=3546  test=5738  sinif=12
+Model parametre sayisi: 4,781,068
+Sinif basina segment: [1074, 956, 1088, 1360, 1128, 1112, 1198, 1128, 1014, 1051, 1228, 6581]
+Maksimum epoch: 100  erken durdurma sabri: 15
+
+  Epoch   1/100 | train loss=2.2491 acc=0.0753 | val loss=2.1010 acc=0.0807  <- en iyi (val_loss dustu)
+  Epoch   2/100 | train loss=2.1874 acc=0.0953 | val loss=2.0740 acc=0.0809  <- en iyi (val_loss dustu)
+  Epoch   3/100 | train loss=2.1393 acc=0.1119 | val loss=2.0381 acc=0.1103  <- en iyi (val_loss dustu)
+  Epoch   4/100 | train loss=2.0951 acc=0.1284 | val loss=2.0004 acc=0.1176  <- en iyi (val_loss dustu)
+  Epoch   5/100 | train loss=2.0396 acc=0.1476 | val loss=1.9686 acc=0.1441  <- en iyi (val_loss dustu)
+  Epoch   6/100 | train loss=1.9910 acc=0.1611 | val loss=1.9173 acc=0.1698  <- en iyi (val_loss dustu)
+  Epoch   7/100 | train loss=1.9445 acc=0.1800 | val loss=1.8680 acc=0.1785  <- en iyi (val_loss dustu)
+  Epoch   8/100 | train loss=1.8926 acc=0.1969 | val loss=1.9039 acc=0.1703  (iyilesme yok: 1/15)
+  Epoch   9/100 | train loss=1.8526 acc=0.2093 | val loss=1.8023 acc=0.2042  <- en iyi (val_loss dustu)
+  Epoch  10/100 | train loss=1.7989 acc=0.2273 | val loss=1.7211 acc=0.2211  <- en iyi (val_loss dustu)
+  Epoch  11/100 | train loss=1.7567 acc=0.2360 | val loss=1.6363 acc=0.2561  <- en iyi (val_loss dustu)
+  Epoch  12/100 | train loss=1.7040 acc=0.2567 | val loss=1.6804 acc=0.2530  (iyilesme yok: 1/15)
+  Epoch  13/100 | train loss=1.6647 acc=0.2658 | val loss=1.6060 acc=0.2611  <- en iyi (val_loss dustu)
+  Epoch  14/100 | train loss=1.6233 acc=0.2752 | val loss=1.4880 acc=0.2772  <- en iyi (val_loss dustu)
+  Epoch  15/100 | train loss=1.5699 acc=0.2944 | val loss=1.4787 acc=0.2879  <- en iyi (val_loss dustu)
+  Epoch  16/100 | train loss=1.5345 acc=0.3036 | val loss=1.6891 acc=0.2473  (iyilesme yok: 1/15)
+  Epoch  17/100 | train loss=1.5046 acc=0.3151 | val loss=1.6205 acc=0.2445  (iyilesme yok: 2/15)
+  Epoch  18/100 | train loss=1.4672 acc=0.3239 | val loss=1.6017 acc=0.2955  (iyilesme yok: 3/15)
+  Epoch  19/100 | train loss=1.4262 acc=0.3424 | val loss=1.4288 acc=0.3452  <- en iyi (val_loss dustu)
+  Epoch  20/100 | train loss=1.4017 acc=0.3502 | val loss=1.3503 acc=0.3675  <- en iyi (val_loss dustu)
+  Epoch  21/100 | train loss=1.3625 acc=0.3609 | val loss=1.5034 acc=0.2857  (iyilesme yok: 1/15)
+  Epoch  22/100 | train loss=1.3246 acc=0.3760 | val loss=1.3871 acc=0.3376  (iyilesme yok: 2/15)
+  Epoch  23/100 | train loss=1.3130 acc=0.3783 | val loss=1.4196 acc=0.3359  (iyilesme yok: 3/15)
+  Epoch  24/100 | train loss=1.2654 acc=0.3935 | val loss=1.3368 acc=0.4027  <- en iyi (val_loss dustu)
+  Epoch  25/100 | train loss=1.2177 acc=0.4066 | val loss=1.3202 acc=0.4089  <- en iyi (val_loss dustu)
+  Epoch  26/100 | train loss=1.1802 acc=0.4273 | val loss=1.3544 acc=0.3440  (iyilesme yok: 1/15)
+  Epoch  27/100 | train loss=1.1325 acc=0.4480 | val loss=1.3019 acc=0.3641  <- en iyi (val_loss dustu)
+  Epoch  28/100 | train loss=1.1086 acc=0.4522 | val loss=1.2210 acc=0.4467  <- en iyi (val_loss dustu)
+  Epoch  29/100 | train loss=1.0618 acc=0.4710 | val loss=1.2063 acc=0.4811  <- en iyi (val_loss dustu)
+  Epoch  30/100 | train loss=1.0290 acc=0.4846 | val loss=1.3445 acc=0.4143  (iyilesme yok: 1/15)
+  Epoch  31/100 | train loss=0.9798 acc=0.5058 | val loss=1.2305 acc=0.5023  (iyilesme yok: 2/15)
+  Epoch  32/100 | train loss=0.9424 acc=0.5165 | val loss=1.2825 acc=0.5073  (iyilesme yok: 3/15)
+  Epoch  33/100 | train loss=0.9081 acc=0.5343 | val loss=1.2044 acc=0.5000  <- en iyi (val_loss dustu)
+  Epoch  34/100 | train loss=0.8708 acc=0.5488 | val loss=1.1825 acc=0.5502  <- en iyi (val_loss dustu)
+  Epoch  35/100 | train loss=0.8414 acc=0.5673 | val loss=1.2285 acc=0.5172  (iyilesme yok: 1/15)
+  Epoch  36/100 | train loss=0.7858 acc=0.5904 | val loss=1.2038 acc=0.5008  (iyilesme yok: 2/15)
+  Epoch  37/100 | train loss=0.7677 acc=0.5983 | val loss=1.1858 acc=0.5412  (iyilesme yok: 3/15)
+  Epoch  38/100 | train loss=0.7171 acc=0.6190 | val loss=1.1723 acc=0.5417  <- en iyi (val_loss dustu)
+  Epoch  39/100 | train loss=0.6957 acc=0.6301 | val loss=1.2552 acc=0.5381  (iyilesme yok: 1/15)
+  Epoch  40/100 | train loss=0.6639 acc=0.6469 | val loss=1.2267 acc=0.5276  (iyilesme yok: 2/15)
+  Epoch  41/100 | train loss=0.6513 acc=0.6552 | val loss=1.1857 acc=0.5798  (iyilesme yok: 3/15)
+  Epoch  42/100 | train loss=0.6046 acc=0.6731 | val loss=1.2438 acc=0.5747  (iyilesme yok: 4/15)
+  Epoch  43/100 | train loss=0.5860 acc=0.6903 | val loss=1.2250 acc=0.5541  (iyilesme yok: 5/15)
+  Epoch  44/100 | train loss=0.5546 acc=0.7056 | val loss=1.2997 acc=0.5643  (iyilesme yok: 6/15)
+  Epoch  45/100 | train loss=0.5407 acc=0.7152 | val loss=1.2847 acc=0.5578  (iyilesme yok: 7/15)
+  Epoch  46/100 | train loss=0.5041 acc=0.7364 | val loss=1.2182 acc=0.5981  (iyilesme yok: 8/15)
+  Epoch  47/100 | train loss=0.4870 acc=0.7437 | val loss=1.1636 acc=0.6269  <- en iyi (val_loss dustu)
+  Epoch  48/100 | train loss=0.4693 acc=0.7582 | val loss=1.2356 acc=0.6230  (iyilesme yok: 1/15)
+  Epoch  49/100 | train loss=0.4564 acc=0.7608 | val loss=1.2025 acc=0.5697  (iyilesme yok: 2/15)
+  Epoch  50/100 | train loss=0.4307 acc=0.7757 | val loss=1.2392 acc=0.6230  (iyilesme yok: 3/15)
+  Epoch  51/100 | train loss=0.4198 acc=0.7869 | val loss=1.1787 acc=0.5736  (iyilesme yok: 4/15)
+  Epoch  52/100 | train loss=0.4177 acc=0.7857 | val loss=1.1812 acc=0.6272  (iyilesme yok: 5/15)
+  Epoch  53/100 | train loss=0.3968 acc=0.8029 | val loss=1.1501 acc=0.6393  <- en iyi (val_loss dustu)
+  Epoch  54/100 | train loss=0.3850 acc=0.8070 | val loss=1.1976 acc=0.6421  (iyilesme yok: 1/15)
+  Epoch  55/100 | train loss=0.3756 acc=0.8176 | val loss=1.1904 acc=0.6452  (iyilesme yok: 2/15)
+  Epoch  56/100 | train loss=0.3635 acc=0.8230 | val loss=1.2584 acc=0.6134  (iyilesme yok: 3/15)
+  Epoch  57/100 | train loss=0.3491 acc=0.8321 | val loss=1.1244 acc=0.6080  <- en iyi (val_loss dustu)
+  Epoch  58/100 | train loss=0.3399 acc=0.8392 | val loss=1.1418 acc=0.6534  (iyilesme yok: 1/15)
+  Epoch  59/100 | train loss=0.3311 acc=0.8473 | val loss=1.1836 acc=0.6537  (iyilesme yok: 2/15)
+  Epoch  60/100 | train loss=0.3276 acc=0.8507 | val loss=1.1760 acc=0.6447  (iyilesme yok: 3/15)
+  Epoch  61/100 | train loss=0.3181 acc=0.8595 | val loss=1.1736 acc=0.6616  (iyilesme yok: 4/15)
+  Epoch  62/100 | train loss=0.3101 acc=0.8628 | val loss=1.2089 acc=0.6607  (iyilesme yok: 5/15)
+  Epoch  63/100 | train loss=0.3030 acc=0.8721 | val loss=1.2166 acc=0.6441  (iyilesme yok: 6/15)
+  Epoch  64/100 | train loss=0.2971 acc=0.8717 | val loss=1.1318 acc=0.6664  (iyilesme yok: 7/15)
+  Epoch  65/100 | train loss=0.2936 acc=0.8791 | val loss=1.1456 acc=0.6447  (iyilesme yok: 8/15)
+  Epoch  66/100 | train loss=0.2822 acc=0.8871 | val loss=1.1431 acc=0.6740  (iyilesme yok: 9/15)
+  Epoch  67/100 | train loss=0.2803 acc=0.8871 | val loss=1.1431 acc=0.6579  (iyilesme yok: 10/15)
+  Epoch  68/100 | train loss=0.2762 acc=0.8892 | val loss=1.1253 acc=0.6605  (iyilesme yok: 11/15)
+  Epoch  69/100 | train loss=0.2718 acc=0.8976 | val loss=1.1335 acc=0.6607  (iyilesme yok: 12/15)
+  Epoch  70/100 | train loss=0.2667 acc=0.8999 | val loss=1.1649 acc=0.6543  (iyilesme yok: 13/15)
+  Epoch  71/100 | train loss=0.2605 acc=0.9064 | val loss=1.1516 acc=0.6655  (iyilesme yok: 14/15)
+  Epoch  72/100 | train loss=0.2555 acc=0.9102 | val loss=1.1913 acc=0.6630  (iyilesme yok: 15/15)
+
+  Erken durdurma: val_loss 15 epoch boyunca iyilesmedi.
+  En iyi model: epoch 57 (val_loss=1.1244)
+  En iyi agirliklar geri yuklendi (epoch 57)
+/usr/local/lib/python3.12/dist-packages/torch/nn/modules/rnn.py:1449: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at /pytorch/aten/src/ATen/native/cudnn/RNN.cpp:1479.)
+  result = _VF.gru(
+SWA ağırlıkları uygulandı
+
+Fold 1 test setinde degerlendiriliyor (epoch 57)...
+
+--- CNN Fold 1 - Segment ---
+  accuracy  : 0.6431
+  precision : 0.6909  (weighted)
+  recall    : 0.6431  (weighted)
+  f1        : 0.6484  (weighted)
+  kappa     : 0.5985
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 325      0.498    0.695  0.580
+  buselik                     299      0.517    0.659  0.579
+  hicaz                       320      0.431    0.634  0.513
+  hicazkar                    435      0.655    0.738  0.694
+  hüzzam                     352      0.673    0.614  0.642
+  kürdilihicazkar            330      0.515    0.694  0.591
+  mahur                       387      0.563    0.574  0.569
+  nihavent                    328      0.814    0.948  0.876
+  rast                        295      0.390    0.580  0.466
+  saba                        516      0.795    0.828  0.811
+  segah                       342      0.609    0.596  0.603
+  dugah                      1809      0.884    0.532  0.665
+
+--- CNN Fold 1 - Sarki ---
+  accuracy  : 0.7277
+  precision : 0.7713  (weighted)
+  recall    : 0.7277  (weighted)
+  f1        : 0.7293  (weighted)
+  kappa     : 0.6876
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  26      0.606    0.769  0.678
+  buselik                      23      0.643    0.783  0.706
+  hicaz                        24      0.552    0.667  0.604
+  hicazkar                     30      0.806    0.967  0.879
+  hüzzam                      23      0.783    0.783  0.783
+  kürdilihicazkar             24      0.583    0.875  0.700
+  mahur                        32      0.714    0.625  0.667
+  nihavent                     24      0.774    1.000  0.873
+  rast                         24      0.462    0.750  0.571
+  saba                         23      0.690    0.870  0.769
+  segah                        26      0.833    0.769  0.800
+  dugah                       158      0.931    0.595  0.726
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi_3/results_m3/cnn_fold1_results.json
+
+############################################################
+# CNN FOLD 2 / 4
+############################################################
+Cihaz: cuda
+train=19059  val=3775  test=5368  sinif=12
+Model parametre sayisi: 4,781,068
+Sinif basina segment: [1080, 1012, 1104, 1230, 1146, 1186, 1203, 1119, 1048, 1312, 1085, 6534]
+Maksimum epoch: 100  erken durdurma sabri: 15
+
+  Epoch   1/100 | train loss=2.2379 acc=0.0800 | val loss=1.9919 acc=0.0850  <- en iyi (val_loss dustu)
+  Epoch   2/100 | train loss=2.1933 acc=0.0933 | val loss=1.9816 acc=0.0919  <- en iyi (val_loss dustu)
+  Epoch   3/100 | train loss=2.1576 acc=0.1079 | val loss=1.9604 acc=0.1020  <- en iyi (val_loss dustu)
+  Epoch   4/100 | train loss=2.1145 acc=0.1237 | val loss=1.8946 acc=0.1311  <- en iyi (val_loss dustu)
+  Epoch   5/100 | train loss=2.0541 acc=0.1470 | val loss=1.8645 acc=0.1253  <- en iyi (val_loss dustu)
+  Epoch   6/100 | train loss=2.0026 acc=0.1675 | val loss=1.8002 acc=0.1637  <- en iyi (val_loss dustu)
+  Epoch   7/100 | train loss=1.9372 acc=0.1901 | val loss=1.8084 acc=0.1494  (iyilesme yok: 1/15)
+  Epoch   8/100 | train loss=1.8832 acc=0.2130 | val loss=1.7665 acc=0.1664  <- en iyi (val_loss dustu)
+  Epoch   9/100 | train loss=1.8376 acc=0.2230 | val loss=1.7501 acc=0.1799  <- en iyi (val_loss dustu)
+  Epoch  10/100 | train loss=1.7923 acc=0.2352 | val loss=1.6888 acc=0.2008  <- en iyi (val_loss dustu)
+  Epoch  11/100 | train loss=1.7404 acc=0.2482 | val loss=1.6415 acc=0.2003  <- en iyi (val_loss dustu)
+  Epoch  12/100 | train loss=1.6892 acc=0.2702 | val loss=1.5357 acc=0.2358  <- en iyi (val_loss dustu)
+  Epoch  13/100 | train loss=1.6538 acc=0.2767 | val loss=1.6076 acc=0.2313  (iyilesme yok: 1/15)
+  Epoch  14/100 | train loss=1.6147 acc=0.2903 | val loss=1.4632 acc=0.2964  <- en iyi (val_loss dustu)
+  Epoch  15/100 | train loss=1.5691 acc=0.3046 | val loss=1.4989 acc=0.2861  (iyilesme yok: 1/15)
+  Epoch  16/100 | train loss=1.5377 acc=0.3140 | val loss=1.4731 acc=0.2816  (iyilesme yok: 2/15)
+  Epoch  17/100 | train loss=1.5075 acc=0.3253 | val loss=1.4145 acc=0.3229  <- en iyi (val_loss dustu)
+  Epoch  18/100 | train loss=1.4692 acc=0.3440 | val loss=1.3788 acc=0.3905  <- en iyi (val_loss dustu)
+  Epoch  19/100 | train loss=1.4355 acc=0.3571 | val loss=1.3840 acc=0.3907  (iyilesme yok: 1/15)
+  Epoch  20/100 | train loss=1.4018 acc=0.3632 | val loss=1.2784 acc=0.3743  <- en iyi (val_loss dustu)
+  Epoch  21/100 | train loss=1.3615 acc=0.3776 | val loss=1.2492 acc=0.4011  <- en iyi (val_loss dustu)
+  Epoch  22/100 | train loss=1.3268 acc=0.3904 | val loss=1.2955 acc=0.3309  (iyilesme yok: 1/15)
+  Epoch  23/100 | train loss=1.3046 acc=0.3959 | val loss=1.2694 acc=0.3555  (iyilesme yok: 2/15)
+  Epoch  24/100 | train loss=1.2619 acc=0.4073 | val loss=1.2458 acc=0.3868  <- en iyi (val_loss dustu)
+  Epoch  25/100 | train loss=1.2286 acc=0.4286 | val loss=1.2509 acc=0.3555  (iyilesme yok: 1/15)
+  Epoch  26/100 | train loss=1.1936 acc=0.4386 | val loss=1.2387 acc=0.4434  <- en iyi (val_loss dustu)
+  Epoch  27/100 | train loss=1.1547 acc=0.4551 | val loss=1.1685 acc=0.4583  <- en iyi (val_loss dustu)
+  Epoch  28/100 | train loss=1.1088 acc=0.4685 | val loss=1.1967 acc=0.4336  (iyilesme yok: 1/15)
+  Epoch  29/100 | train loss=1.0902 acc=0.4830 | val loss=1.2246 acc=0.4201  (iyilesme yok: 2/15)
+  Epoch  30/100 | train loss=1.0428 acc=0.4960 | val loss=1.2463 acc=0.4196  (iyilesme yok: 3/15)
+  Epoch  31/100 | train loss=1.0109 acc=0.5077 | val loss=1.1222 acc=0.4898  <- en iyi (val_loss dustu)
+  Epoch  32/100 | train loss=0.9664 acc=0.5260 | val loss=1.0753 acc=0.5126  <- en iyi (val_loss dustu)
+  Epoch  33/100 | train loss=0.9315 acc=0.5439 | val loss=1.2192 acc=0.5033  (iyilesme yok: 1/15)
+  Epoch  34/100 | train loss=0.9046 acc=0.5562 | val loss=1.0661 acc=0.5526  <- en iyi (val_loss dustu)
+  Epoch  35/100 | train loss=0.8702 acc=0.5747 | val loss=1.1097 acc=0.5081  (iyilesme yok: 1/15)
+  Epoch  36/100 | train loss=0.8447 acc=0.5805 | val loss=1.0706 acc=0.5184  (iyilesme yok: 2/15)
+  Epoch  37/100 | train loss=0.7981 acc=0.5968 | val loss=1.0735 acc=0.5136  (iyilesme yok: 3/15)
+  Epoch  38/100 | train loss=0.7689 acc=0.6101 | val loss=1.0720 acc=0.5685  (iyilesme yok: 4/15)
+  Epoch  39/100 | train loss=0.7393 acc=0.6269 | val loss=1.1335 acc=0.5608  (iyilesme yok: 5/15)
+  Epoch  40/100 | train loss=0.7053 acc=0.6384 | val loss=1.0413 acc=0.5979  <- en iyi (val_loss dustu)
+  Epoch  41/100 | train loss=0.6814 acc=0.6505 | val loss=1.0405 acc=0.5881  <- en iyi (val_loss dustu)
+  Epoch  42/100 | train loss=0.6502 acc=0.6647 | val loss=0.9998 acc=0.5735  <- en iyi (val_loss dustu)
+  Epoch  43/100 | train loss=0.6260 acc=0.6817 | val loss=1.0294 acc=0.5809  (iyilesme yok: 1/15)
+  Epoch  44/100 | train loss=0.6016 acc=0.6916 | val loss=1.0656 acc=0.5881  (iyilesme yok: 2/15)
+  Epoch  45/100 | train loss=0.5733 acc=0.7048 | val loss=1.0417 acc=0.5693  (iyilesme yok: 3/15)
+  Epoch  46/100 | train loss=0.5496 acc=0.7174 | val loss=1.0588 acc=0.5846  (iyilesme yok: 4/15)
+  Epoch  47/100 | train loss=0.5221 acc=0.7328 | val loss=1.0090 acc=0.6026  (iyilesme yok: 5/15)
+  Epoch  48/100 | train loss=0.5141 acc=0.7389 | val loss=1.0190 acc=0.6265  (iyilesme yok: 6/15)
+  Epoch  49/100 | train loss=0.4894 acc=0.7497 | val loss=1.0545 acc=0.6098  (iyilesme yok: 7/15)
+  Epoch  50/100 | train loss=0.4653 acc=0.7632 | val loss=1.0836 acc=0.6482  (iyilesme yok: 8/15)
+  Epoch  51/100 | train loss=0.4515 acc=0.7748 | val loss=1.0424 acc=0.5987  (iyilesme yok: 9/15)
+  Epoch  52/100 | train loss=0.4376 acc=0.7801 | val loss=1.0363 acc=0.5875  (iyilesme yok: 10/15)
+  Epoch  53/100 | train loss=0.4267 acc=0.7878 | val loss=1.0253 acc=0.6072  (iyilesme yok: 11/15)
+  Epoch  54/100 | train loss=0.4093 acc=0.7977 | val loss=1.0149 acc=0.6501  (iyilesme yok: 12/15)
+  Epoch  55/100 | train loss=0.3954 acc=0.8037 | val loss=0.9824 acc=0.6164  <- en iyi (val_loss dustu)
+  Epoch  56/100 | train loss=0.3869 acc=0.8117 | val loss=1.0108 acc=0.6111  (iyilesme yok: 1/15)
+  Epoch  57/100 | train loss=0.3742 acc=0.8184 | val loss=1.0130 acc=0.6596  (iyilesme yok: 2/15)
+  Epoch  58/100 | train loss=0.3628 acc=0.8280 | val loss=1.0027 acc=0.6633  (iyilesme yok: 3/15)
+  Epoch  59/100 | train loss=0.3514 acc=0.8346 | val loss=1.0142 acc=0.6294  (iyilesme yok: 4/15)
+  Epoch  60/100 | train loss=0.3402 acc=0.8407 | val loss=1.0092 acc=0.6236  (iyilesme yok: 5/15)
+  Epoch  61/100 | train loss=0.3310 acc=0.8501 | val loss=1.0469 acc=0.6723  (iyilesme yok: 6/15)
+  Epoch  62/100 | train loss=0.3226 acc=0.8528 | val loss=1.0136 acc=0.6519  (iyilesme yok: 7/15)
+  Epoch  63/100 | train loss=0.3167 acc=0.8619 | val loss=1.0272 acc=0.6479  (iyilesme yok: 8/15)
+  Epoch  64/100 | train loss=0.3086 acc=0.8682 | val loss=1.0063 acc=0.6755  (iyilesme yok: 9/15)
+  Epoch  65/100 | train loss=0.3071 acc=0.8689 | val loss=1.0126 acc=0.6742  (iyilesme yok: 10/15)
+  Epoch  66/100 | train loss=0.2971 acc=0.8766 | val loss=1.0068 acc=0.6551  (iyilesme yok: 11/15)
+  Epoch  67/100 | train loss=0.2945 acc=0.8775 | val loss=1.0257 acc=0.6403  (iyilesme yok: 12/15)
+  Epoch  68/100 | train loss=0.2851 acc=0.8853 | val loss=1.0082 acc=0.6660  (iyilesme yok: 13/15)
+  Epoch  69/100 | train loss=0.2843 acc=0.8874 | val loss=0.9947 acc=0.6652  (iyilesme yok: 14/15)
+  Epoch  70/100 | train loss=0.2783 acc=0.8924 | val loss=1.0340 acc=0.6588  (iyilesme yok: 15/15)
+
+  Erken durdurma: val_loss 15 epoch boyunca iyilesmedi.
+  En iyi model: epoch 55 (val_loss=0.9824)
+  En iyi agirliklar geri yuklendi (epoch 55)
+/usr/local/lib/python3.12/dist-packages/torch/nn/modules/rnn.py:1449: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at /pytorch/aten/src/ATen/native/cudnn/RNN.cpp:1479.)
+  result = _VF.gru(
+SWA ağırlıkları uygulandı
+
+Fold 2 test setinde degerlendiriliyor (epoch 55)...
+
+--- CNN Fold 2 - Segment ---
+  accuracy  : 0.5894
+  precision : 0.6425  (weighted)
+  recall    : 0.5894  (weighted)
+  f1        : 0.5907  (weighted)
+  kappa     : 0.5416
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 397      0.480    0.456  0.468
+  buselik                     252      0.459    0.710  0.558
+  hicaz                       305      0.548    0.620  0.582
+  hicazkar                    450      0.739    0.731  0.735
+  hüzzam                     334      0.492    0.629  0.552
+  kürdilihicazkar            316      0.518    0.687  0.590
+  mahur                       337      0.495    0.626  0.553
+  nihavent                    328      0.782    0.951  0.858
+  rast                        304      0.344    0.618  0.442
+  saba                        315      0.712    0.746  0.729
+  segah                       338      0.466    0.515  0.489
+  dugah                      1692      0.830    0.437  0.572
+
+--- CNN Fold 2 - Sarki ---
+  accuracy  : 0.7028
+  precision : 0.7557  (weighted)
+  recall    : 0.7028  (weighted)
+  f1        : 0.7067  (weighted)
+  kappa     : 0.6605
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  25      0.581    0.720  0.643
+  buselik                      23      0.720    0.783  0.750
+  hicaz                        24      0.783    0.750  0.766
+  hicazkar                     30      0.867    0.867  0.867
+  hüzzam                      23      0.536    0.652  0.588
+  kürdilihicazkar             24      0.545    0.750  0.632
+  mahur                        32      0.629    0.688  0.657
+  nihavent                     24      0.697    0.958  0.807
+  rast                         24      0.435    0.833  0.571
+  saba                         23      0.840    0.913  0.875
+  segah                        26      0.600    0.692  0.643
+  dugah                       156      0.926    0.564  0.701
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi_3/results_m3/cnn_fold2_results.json
+
+############################################################
+# CNN FOLD 3 / 4
+############################################################
+Cihaz: cuda
+train=18635  val=3510  test=6057  sinif=12
+Model parametre sayisi: 4,781,068
+Sinif basina segment: [1130, 945, 1071, 1292, 1216, 1149, 1166, 1099, 1043, 982, 1053, 6489]
+Maksimum epoch: 100  erken durdurma sabri: 15
+
+  Epoch   1/100 | train loss=2.2477 acc=0.0754 | val loss=2.3957 acc=0.1043  <- en iyi (val_loss dustu)
+  Epoch   2/100 | train loss=2.2028 acc=0.0905 | val loss=2.3519 acc=0.1687  <- en iyi (val_loss dustu)
+  Epoch   3/100 | train loss=2.1703 acc=0.0991 | val loss=2.3101 acc=0.1550  <- en iyi (val_loss dustu)
+  Epoch   4/100 | train loss=2.1236 acc=0.1162 | val loss=2.1909 acc=0.2108  <- en iyi (val_loss dustu)
+  Epoch   5/100 | train loss=2.0593 acc=0.1382 | val loss=2.1512 acc=0.2148  <- en iyi (val_loss dustu)
+  Epoch   6/100 | train loss=1.9992 acc=0.1648 | val loss=2.0724 acc=0.2655  <- en iyi (val_loss dustu)
+  Epoch   7/100 | train loss=1.9465 acc=0.1794 | val loss=2.0278 acc=0.2573  <- en iyi (val_loss dustu)
+  Epoch   8/100 | train loss=1.8889 acc=0.2002 | val loss=1.9641 acc=0.2501  <- en iyi (val_loss dustu)
+  Epoch   9/100 | train loss=1.8446 acc=0.2138 | val loss=1.9053 acc=0.2618  <- en iyi (val_loss dustu)
+  Epoch  10/100 | train loss=1.7910 acc=0.2298 | val loss=2.0246 acc=0.2350  (iyilesme yok: 1/15)
+  Epoch  11/100 | train loss=1.7330 acc=0.2451 | val loss=1.7909 acc=0.2994  <- en iyi (val_loss dustu)
+  Epoch  12/100 | train loss=1.6997 acc=0.2550 | val loss=1.7532 acc=0.3313  <- en iyi (val_loss dustu)
+  Epoch  13/100 | train loss=1.6314 acc=0.2727 | val loss=1.8132 acc=0.3088  (iyilesme yok: 1/15)
+  Epoch  14/100 | train loss=1.5866 acc=0.2849 | val loss=1.7273 acc=0.3487  <- en iyi (val_loss dustu)
+  Epoch  15/100 | train loss=1.5481 acc=0.2987 | val loss=1.7620 acc=0.3123  (iyilesme yok: 1/15)
+  Epoch  16/100 | train loss=1.4938 acc=0.3159 | val loss=1.8885 acc=0.2732  (iyilesme yok: 2/15)
+  Epoch  17/100 | train loss=1.4691 acc=0.3313 | val loss=1.6731 acc=0.3556  <- en iyi (val_loss dustu)
+  Epoch  18/100 | train loss=1.4322 acc=0.3382 | val loss=1.6977 acc=0.3484  (iyilesme yok: 1/15)
+  Epoch  19/100 | train loss=1.3949 acc=0.3546 | val loss=1.6661 acc=0.3536  <- en iyi (val_loss dustu)
+  Epoch  20/100 | train loss=1.3613 acc=0.3645 | val loss=1.5360 acc=0.4179  <- en iyi (val_loss dustu)
+  Epoch  21/100 | train loss=1.3287 acc=0.3757 | val loss=1.5206 acc=0.4066  <- en iyi (val_loss dustu)
+  Epoch  22/100 | train loss=1.2885 acc=0.3936 | val loss=1.4906 acc=0.4068  <- en iyi (val_loss dustu)
+  Epoch  23/100 | train loss=1.2543 acc=0.3979 | val loss=1.6886 acc=0.3618  (iyilesme yok: 1/15)
+  Epoch  24/100 | train loss=1.2282 acc=0.4111 | val loss=1.4579 acc=0.4162  <- en iyi (val_loss dustu)
+  Epoch  25/100 | train loss=1.1833 acc=0.4284 | val loss=1.5203 acc=0.3960  (iyilesme yok: 1/15)
+  Epoch  26/100 | train loss=1.1432 acc=0.4451 | val loss=1.5093 acc=0.4028  (iyilesme yok: 2/15)
+  Epoch  27/100 | train loss=1.1095 acc=0.4558 | val loss=1.4531 acc=0.4613  <- en iyi (val_loss dustu)
+  Epoch  28/100 | train loss=1.0738 acc=0.4707 | val loss=1.3941 acc=0.4977  <- en iyi (val_loss dustu)
+  Epoch  29/100 | train loss=1.0478 acc=0.4826 | val loss=1.4452 acc=0.4516  (iyilesme yok: 1/15)
+  Epoch  30/100 | train loss=0.9963 acc=0.5010 | val loss=1.4092 acc=0.5040  (iyilesme yok: 2/15)
+  Epoch  31/100 | train loss=0.9607 acc=0.5187 | val loss=1.4402 acc=0.4826  (iyilesme yok: 3/15)
+  Epoch  32/100 | train loss=0.9213 acc=0.5284 | val loss=1.4478 acc=0.4761  (iyilesme yok: 4/15)
+  Epoch  33/100 | train loss=0.8943 acc=0.5422 | val loss=1.4625 acc=0.4379  (iyilesme yok: 5/15)
+  Epoch  34/100 | train loss=0.8470 acc=0.5597 | val loss=1.4615 acc=0.4994  (iyilesme yok: 6/15)
+  Epoch  35/100 | train loss=0.8200 acc=0.5733 | val loss=1.3193 acc=0.5353  <- en iyi (val_loss dustu)
+  Epoch  36/100 | train loss=0.7820 acc=0.5910 | val loss=1.2952 acc=0.5670  <- en iyi (val_loss dustu)
+  Epoch  37/100 | train loss=0.7654 acc=0.5970 | val loss=1.2956 acc=0.5467  (iyilesme yok: 1/15)
+  Epoch  38/100 | train loss=0.7096 acc=0.6241 | val loss=1.2595 acc=0.5644  <- en iyi (val_loss dustu)
+  Epoch  39/100 | train loss=0.6998 acc=0.6312 | val loss=1.2950 acc=0.5462  (iyilesme yok: 1/15)
+  Epoch  40/100 | train loss=0.6621 acc=0.6463 | val loss=1.2380 acc=0.5254  <- en iyi (val_loss dustu)
+  Epoch  41/100 | train loss=0.6361 acc=0.6569 | val loss=1.4024 acc=0.5276  (iyilesme yok: 1/15)
+  Epoch  42/100 | train loss=0.6070 acc=0.6741 | val loss=1.5536 acc=0.4980  (iyilesme yok: 2/15)
+  Epoch  43/100 | train loss=0.5811 acc=0.6895 | val loss=1.4033 acc=0.5618  (iyilesme yok: 3/15)
+  Epoch  44/100 | train loss=0.5642 acc=0.6980 | val loss=1.3576 acc=0.5803  (iyilesme yok: 4/15)
+  Epoch  45/100 | train loss=0.5420 acc=0.7105 | val loss=1.2776 acc=0.5917  (iyilesme yok: 5/15)
+  Epoch  46/100 | train loss=0.5162 acc=0.7238 | val loss=1.3769 acc=0.5863  (iyilesme yok: 6/15)
+  Epoch  47/100 | train loss=0.4912 acc=0.7381 | val loss=1.3297 acc=0.5915  (iyilesme yok: 7/15)
+  Epoch  48/100 | train loss=0.4684 acc=0.7528 | val loss=1.3825 acc=0.5667  (iyilesme yok: 8/15)
+  Epoch  49/100 | train loss=0.4545 acc=0.7593 | val loss=1.2460 acc=0.6390  (iyilesme yok: 9/15)
+  Epoch  50/100 | train loss=0.4477 acc=0.7681 | val loss=1.3228 acc=0.6365  (iyilesme yok: 10/15)
+  Epoch  51/100 | train loss=0.4246 acc=0.7805 | val loss=1.3124 acc=0.6199  (iyilesme yok: 11/15)
+  Epoch  52/100 | train loss=0.4163 acc=0.7833 | val loss=1.3323 acc=0.5994  (iyilesme yok: 12/15)
+  Epoch  53/100 | train loss=0.3984 acc=0.7992 | val loss=1.3305 acc=0.6154  (iyilesme yok: 13/15)
+  Epoch  54/100 | train loss=0.3800 acc=0.8097 | val loss=1.3612 acc=0.6097  (iyilesme yok: 14/15)
+  Epoch  55/100 | train loss=0.3782 acc=0.8105 | val loss=1.3261 acc=0.6165  (iyilesme yok: 15/15)
+
+  Erken durdurma: val_loss 15 epoch boyunca iyilesmedi.
+  En iyi model: epoch 40 (val_loss=1.2380)
+  En iyi agirliklar geri yuklendi (epoch 40)
+/usr/local/lib/python3.12/dist-packages/torch/nn/modules/rnn.py:1449: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at /pytorch/aten/src/ATen/native/cudnn/RNN.cpp:1479.)
+  result = _VF.gru(
+SWA ağırlıkları uygulandı
+
+Fold 3 test setinde degerlendiriliyor (epoch 40)...
+
+--- CNN Fold 3 - Segment ---
+  accuracy  : 0.5361
+  precision : 0.6400  (weighted)
+  recall    : 0.5361  (weighted)
+  f1        : 0.5428  (weighted)
+  kappa     : 0.4785
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 328      0.444    0.515  0.477
+  buselik                     295      0.423    0.712  0.530
+  hicaz                       322      0.524    0.643  0.577
+  hicazkar                    392      0.605    0.765  0.676
+  hüzzam                     327      0.384    0.593  0.466
+  kürdilihicazkar            319      0.394    0.602  0.476
+  mahur                       384      0.438    0.544  0.485
+  nihavent                    305      0.730    0.875  0.796
+  rast                        279      0.211    0.405  0.277
+  saba                        411      0.662    0.642  0.652
+  segah                       389      0.433    0.566  0.491
+  dugah                      2306      0.893    0.391  0.544
+
+--- CNN Fold 3 - Sarki ---
+  accuracy  : 0.6667
+  precision : 0.7470  (weighted)
+  recall    : 0.6667  (weighted)
+  f1        : 0.6719  (weighted)
+  kappa     : 0.6234
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  25      0.704    0.760  0.731
+  buselik                      23      0.583    0.913  0.712
+  hicaz                        24      0.680    0.708  0.694
+  hicazkar                     29      0.844    0.931  0.885
+  hüzzam                      23      0.581    0.783  0.667
+  kürdilihicazkar             24      0.439    0.750  0.554
+  mahur                        32      0.525    0.656  0.583
+  nihavent                     23      0.750    0.913  0.824
+  rast                         23      0.302    0.565  0.394
+  saba                         22      0.762    0.727  0.744
+  segah                        26      0.760    0.731  0.745
+  dugah                       155      0.950    0.490  0.647
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi_3/results_m3/cnn_fold3_results.json
+
+############################################################
+# CNN FOLD 4 / 4
+############################################################
+Cihaz: cuda
+train=19587  val=3455  test=5160  sinif=12
+Model parametre sayisi: 4,781,068
+Sinif basina segment: [1180, 980, 1142, 1471, 1171, 1117, 1332, 1085, 946, 1410, 1200, 6553]
+Maksimum epoch: 100  erken durdurma sabri: 15
+
+  Epoch   1/100 | train loss=2.2378 acc=0.0750 | val loss=1.9242 acc=0.0842  <- en iyi (val_loss dustu)
+  Epoch   2/100 | train loss=2.1917 acc=0.0913 | val loss=1.8947 acc=0.0886  <- en iyi (val_loss dustu)
+  Epoch   3/100 | train loss=2.1451 acc=0.1098 | val loss=1.8383 acc=0.1135  <- en iyi (val_loss dustu)
+  Epoch   4/100 | train loss=2.0965 acc=0.1286 | val loss=1.7897 acc=0.1638  <- en iyi (val_loss dustu)
+  Epoch   5/100 | train loss=2.0392 acc=0.1530 | val loss=1.7518 acc=0.1467  <- en iyi (val_loss dustu)
+  Epoch   6/100 | train loss=1.9851 acc=0.1780 | val loss=1.6921 acc=0.1673  <- en iyi (val_loss dustu)
+  Epoch   7/100 | train loss=1.9359 acc=0.1947 | val loss=1.6457 acc=0.1800  <- en iyi (val_loss dustu)
+  Epoch   8/100 | train loss=1.8710 acc=0.2167 | val loss=1.5815 acc=0.2049  <- en iyi (val_loss dustu)
+  Epoch   9/100 | train loss=1.8272 acc=0.2354 | val loss=1.5141 acc=0.1942  <- en iyi (val_loss dustu)
+  Epoch  10/100 | train loss=1.7826 acc=0.2445 | val loss=1.4685 acc=0.2124  <- en iyi (val_loss dustu)
+  Epoch  11/100 | train loss=1.7420 acc=0.2613 | val loss=1.4873 acc=0.2205  (iyilesme yok: 1/15)
+  Epoch  12/100 | train loss=1.6856 acc=0.2795 | val loss=1.4224 acc=0.2674  <- en iyi (val_loss dustu)
+  Epoch  13/100 | train loss=1.6406 acc=0.2913 | val loss=1.4524 acc=0.2379  (iyilesme yok: 1/15)
+  Epoch  14/100 | train loss=1.5882 acc=0.3040 | val loss=1.4270 acc=0.2741  (iyilesme yok: 2/15)
+  Epoch  15/100 | train loss=1.5432 acc=0.3212 | val loss=1.2672 acc=0.3343  <- en iyi (val_loss dustu)
+  Epoch  16/100 | train loss=1.5064 acc=0.3327 | val loss=1.3246 acc=0.2796  (iyilesme yok: 1/15)
+  Epoch  17/100 | train loss=1.4692 acc=0.3444 | val loss=1.3079 acc=0.2692  (iyilesme yok: 2/15)
+  Epoch  18/100 | train loss=1.4357 acc=0.3542 | val loss=1.3127 acc=0.2897  (iyilesme yok: 3/15)
+  Epoch  19/100 | train loss=1.3917 acc=0.3703 | val loss=1.2182 acc=0.3334  <- en iyi (val_loss dustu)
+  Epoch  20/100 | train loss=1.3618 acc=0.3812 | val loss=1.3130 acc=0.3132  (iyilesme yok: 1/15)
+  Epoch  21/100 | train loss=1.3366 acc=0.3906 | val loss=1.2465 acc=0.3386  (iyilesme yok: 2/15)
+  Epoch  22/100 | train loss=1.3000 acc=0.4050 | val loss=1.3931 acc=0.2958  (iyilesme yok: 3/15)
+  Epoch  23/100 | train loss=1.2612 acc=0.4199 | val loss=1.2904 acc=0.2949  (iyilesme yok: 4/15)
+  Epoch  24/100 | train loss=1.2343 acc=0.4314 | val loss=1.2107 acc=0.3508  <- en iyi (val_loss dustu)
+  Epoch  25/100 | train loss=1.1849 acc=0.4427 | val loss=1.1596 acc=0.3395  <- en iyi (val_loss dustu)
+  Epoch  26/100 | train loss=1.1516 acc=0.4542 | val loss=1.0955 acc=0.4061  <- en iyi (val_loss dustu)
+  Epoch  27/100 | train loss=1.1279 acc=0.4669 | val loss=1.2034 acc=0.3878  (iyilesme yok: 1/15)
+  Epoch  28/100 | train loss=1.0699 acc=0.4928 | val loss=1.0491 acc=0.4663  <- en iyi (val_loss dustu)
+  Epoch  29/100 | train loss=1.0476 acc=0.4969 | val loss=1.0642 acc=0.3887  (iyilesme yok: 1/15)
+  Epoch  30/100 | train loss=1.0066 acc=0.5174 | val loss=1.0879 acc=0.4547  (iyilesme yok: 2/15)
+  Epoch  31/100 | train loss=0.9633 acc=0.5309 | val loss=1.0932 acc=0.4556  (iyilesme yok: 3/15)
+  Epoch  32/100 | train loss=0.9241 acc=0.5453 | val loss=1.0836 acc=0.4119  (iyilesme yok: 4/15)
+  Epoch  33/100 | train loss=0.8914 acc=0.5627 | val loss=1.0731 acc=0.3965  (iyilesme yok: 5/15)
+  Epoch  34/100 | train loss=0.8590 acc=0.5740 | val loss=1.0414 acc=0.5071  <- en iyi (val_loss dustu)
+  Epoch  35/100 | train loss=0.8211 acc=0.5924 | val loss=1.0936 acc=0.4362  (iyilesme yok: 1/15)
+  Epoch  36/100 | train loss=0.7872 acc=0.6079 | val loss=1.0607 acc=0.5033  (iyilesme yok: 2/15)
+  Epoch  37/100 | train loss=0.7559 acc=0.6180 | val loss=1.0358 acc=0.4744  <- en iyi (val_loss dustu)
+  Epoch  38/100 | train loss=0.7212 acc=0.6375 | val loss=1.0441 acc=0.4805  (iyilesme yok: 1/15)
+  Epoch  39/100 | train loss=0.6893 acc=0.6501 | val loss=0.9675 acc=0.5603  <- en iyi (val_loss dustu)
+  Epoch  40/100 | train loss=0.6639 acc=0.6619 | val loss=0.9931 acc=0.5598  (iyilesme yok: 1/15)
+  Epoch  41/100 | train loss=0.6396 acc=0.6788 | val loss=1.0239 acc=0.4860  (iyilesme yok: 2/15)
+  Epoch  42/100 | train loss=0.6179 acc=0.6842 | val loss=1.0679 acc=0.5896  (iyilesme yok: 3/15)
+  Epoch  43/100 | train loss=0.5796 acc=0.7042 | val loss=1.0419 acc=0.4926  (iyilesme yok: 4/15)
+  Epoch  44/100 | train loss=0.5591 acc=0.7170 | val loss=1.0269 acc=0.5473  (iyilesme yok: 5/15)
+  Epoch  45/100 | train loss=0.5288 acc=0.7285 | val loss=1.0094 acc=0.5473  (iyilesme yok: 6/15)
+  Epoch  46/100 | train loss=0.5206 acc=0.7398 | val loss=1.0057 acc=0.5540  (iyilesme yok: 7/15)
+  Epoch  47/100 | train loss=0.4907 acc=0.7517 | val loss=1.0583 acc=0.5893  (iyilesme yok: 8/15)
+  Epoch  48/100 | train loss=0.4761 acc=0.7619 | val loss=1.0155 acc=0.5910  (iyilesme yok: 9/15)
+  Epoch  49/100 | train loss=0.4464 acc=0.7791 | val loss=0.9916 acc=0.5771  (iyilesme yok: 10/15)
+  Epoch  50/100 | train loss=0.4362 acc=0.7842 | val loss=1.0074 acc=0.5415  (iyilesme yok: 11/15)
+  Epoch  51/100 | train loss=0.4235 acc=0.7921 | val loss=1.0122 acc=0.5818  (iyilesme yok: 12/15)
+  Epoch  52/100 | train loss=0.4022 acc=0.8038 | val loss=1.0265 acc=0.6017  (iyilesme yok: 13/15)
+  Epoch  53/100 | train loss=0.3916 acc=0.8115 | val loss=1.0038 acc=0.5731  (iyilesme yok: 14/15)
+  Epoch  54/100 | train loss=0.3754 acc=0.8214 | val loss=0.9839 acc=0.6260  (iyilesme yok: 15/15)
+
+  Erken durdurma: val_loss 15 epoch boyunca iyilesmedi.
+  En iyi model: epoch 39 (val_loss=0.9675)
+  En iyi agirliklar geri yuklendi (epoch 39)
+/usr/local/lib/python3.12/dist-packages/torch/nn/modules/rnn.py:1449: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at /pytorch/aten/src/ATen/native/cudnn/RNN.cpp:1479.)
+  result = _VF.gru(
+SWA ağırlıkları uygulandı
+
+Fold 4 test setinde degerlendiriliyor (epoch 39)...
+
+--- CNN Fold 4 - Segment ---
+  accuracy  : 0.5622
+  precision : 0.6503  (weighted)
+  recall    : 0.5622  (weighted)
+  f1        : 0.5599  (weighted)
+  kappa     : 0.5156
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 347      0.475    0.573  0.520
+  buselik                     314      0.644    0.605  0.624
+  hicaz                       319      0.501    0.630  0.558
+  hicazkar                    330      0.589    0.633  0.610
+  hüzzam                     331      0.570    0.502  0.534
+  kürdilihicazkar            348      0.442    0.652  0.527
+  mahur                       290      0.447    0.738  0.557
+  nihavent                    324      0.706    0.941  0.807
+  rast                        286      0.298    0.577  0.393
+  saba                        268      0.579    0.735  0.648
+  segah                       317      0.530    0.672  0.592
+  dugah                      1686      0.904    0.365  0.520
+
+--- CNN Fold 4 - Sarki ---
+  accuracy  : 0.6557
+  precision : 0.7336  (weighted)
+  recall    : 0.6557  (weighted)
+  f1        : 0.6540  (weighted)
+  kappa     : 0.6128
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  25      0.581    0.720  0.643
+  buselik                      23      0.731    0.826  0.776
+  hicaz                        24      0.581    0.750  0.655
+  hicazkar                     29      0.759    0.759  0.759
+  hüzzam                      23      0.522    0.522  0.522
+  kürdilihicazkar             24      0.452    0.792  0.576
+  mahur                        32      0.619    0.812  0.703
+  nihavent                     23      0.667    0.957  0.786
+  rast                         23      0.410    0.696  0.516
+  saba                         22      0.600    0.818  0.692
+  segah                        25      0.704    0.760  0.731
+  dugah                       154      0.959    0.461  0.623
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi_3/results_m3/cnn_fold4_results.json
