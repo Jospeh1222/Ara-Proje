@@ -1,0 +1,475 @@
+
+############################################################
+# RESNET-3CH FOLD 0 / 4
+# Input: 3-kanal PNG (R=mel, G=MFCC, B=chroma)
+############################################################
+Cihaz: cuda
+Fold dosyasi: /content/folds_spec.json
+train=19175  val=3148  test=5879  sinif=12
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth
+100% 44.7M/44.7M [00:00<00:00, 246MB/s]
+Toplam parametre: 11,310,924
+Egitilebilir parametre: 10,627,852  (94.0%)
+Donduruluyor: conv1, bn1, layer1, layer2, layer3
+Egitiliyor:   layer4, fc (yeni head)
+Sinif basina segment: [1306, 958, 1057, 1395, 1165, 1088, 1188, 1132, 1010, 1372, 1167, 6337]
+Max epoch: 50  patience: 7  LR: 0.0001
+
+  Epoch   1/50 | train loss=2.4000 acc=0.1581 | val loss=2.3244 acc=0.1836  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.0651 acc=0.3058 | val loss=2.0087 acc=0.2919  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=1.6821 acc=0.4516 | val loss=1.8406 acc=0.4231  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=1.3803 acc=0.5621 | val loss=1.7960 acc=0.4590  <- en iyi (val_loss dustu)
+  Epoch   5/50 | train loss=1.1404 acc=0.6471 | val loss=1.7716 acc=0.5245  <- en iyi (val_loss dustu)
+  Epoch   6/50 | train loss=0.9763 acc=0.7179 | val loss=1.8942 acc=0.5092  (iyilesme yok: 1/7)
+  Epoch   7/50 | train loss=0.8619 acc=0.7717 | val loss=1.8208 acc=0.5667  (iyilesme yok: 2/7)
+  Epoch   8/50 | train loss=0.7679 acc=0.8127 | val loss=2.0229 acc=0.5073  (iyilesme yok: 3/7)
+  Epoch   9/50 | train loss=0.7085 acc=0.8445 | val loss=1.8668 acc=0.5610  (iyilesme yok: 4/7)
+  Epoch  10/50 | train loss=0.6538 acc=0.8710 | val loss=1.8318 acc=0.5565  (iyilesme yok: 5/7)
+  Epoch  11/50 | train loss=0.6282 acc=0.8873 | val loss=1.7684 acc=0.6032  <- en iyi (val_loss dustu)
+  Epoch  12/50 | train loss=0.5963 acc=0.9092 | val loss=1.7607 acc=0.5848  <- en iyi (val_loss dustu)
+  Epoch  13/50 | train loss=0.5764 acc=0.9177 | val loss=1.6867 acc=0.6163  <- en iyi (val_loss dustu)
+  Epoch  14/50 | train loss=0.5547 acc=0.9313 | val loss=1.6930 acc=0.6058  (iyilesme yok: 1/7)
+  Epoch  15/50 | train loss=0.5386 acc=0.9380 | val loss=1.6889 acc=0.5772  (iyilesme yok: 2/7)
+  Epoch  16/50 | train loss=0.5285 acc=0.9465 | val loss=1.7095 acc=0.5874  (iyilesme yok: 3/7)
+  Epoch  17/50 | train loss=0.5211 acc=0.9504 | val loss=1.6771 acc=0.6001  <- en iyi (val_loss dustu)
+  Epoch  18/50 | train loss=0.5061 acc=0.9581 | val loss=1.6778 acc=0.6074  (iyilesme yok: 1/7)
+  Epoch  19/50 | train loss=0.5028 acc=0.9590 | val loss=1.6194 acc=0.6112  <- en iyi (val_loss dustu)
+  Epoch  20/50 | train loss=0.4830 acc=0.9666 | val loss=1.6985 acc=0.5928  (iyilesme yok: 1/7)
+  Epoch  21/50 | train loss=0.4797 acc=0.9702 | val loss=1.6851 acc=0.5905  (iyilesme yok: 2/7)
+  Epoch  22/50 | train loss=0.4779 acc=0.9702 | val loss=1.7580 acc=0.5753  (iyilesme yok: 3/7)
+  Epoch  23/50 | train loss=0.4660 acc=0.9737 | val loss=1.7074 acc=0.6001  (iyilesme yok: 4/7)
+  Epoch  24/50 | train loss=0.4694 acc=0.9757 | val loss=1.6257 acc=0.6185  (iyilesme yok: 5/7)
+  Epoch  25/50 | train loss=0.4616 acc=0.9772 | val loss=1.6161 acc=0.6223  <- en iyi (val_loss dustu)
+  Epoch  26/50 | train loss=0.4554 acc=0.9785 | val loss=1.6405 acc=0.6179  (iyilesme yok: 1/7)
+  Epoch  27/50 | train loss=0.4510 acc=0.9803 | val loss=1.6334 acc=0.6290  (iyilesme yok: 2/7)
+  Epoch  28/50 | train loss=0.4481 acc=0.9806 | val loss=1.7252 acc=0.6001  (iyilesme yok: 3/7)
+  Epoch  29/50 | train loss=0.4455 acc=0.9827 | val loss=1.5790 acc=0.6347  <- en iyi (val_loss dustu)
+  Epoch  30/50 | train loss=0.4479 acc=0.9799 | val loss=1.6853 acc=0.6096  (iyilesme yok: 1/7)
+  Epoch  31/50 | train loss=0.4392 acc=0.9847 | val loss=1.7307 acc=0.5997  (iyilesme yok: 2/7)
+  Epoch  32/50 | train loss=0.4390 acc=0.9848 | val loss=1.6719 acc=0.5842  (iyilesme yok: 3/7)
+  Epoch  33/50 | train loss=0.4337 acc=0.9855 | val loss=1.6316 acc=0.6252  (iyilesme yok: 4/7)
+  Epoch  34/50 | train loss=0.4393 acc=0.9846 | val loss=1.6754 acc=0.5966  (iyilesme yok: 5/7)
+  Epoch  35/50 | train loss=0.4324 acc=0.9862 | val loss=1.6728 acc=0.6179  (iyilesme yok: 6/7)
+  Epoch  36/50 | train loss=0.4327 acc=0.9863 | val loss=1.6907 acc=0.6096  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 29 (val_loss=1.5790)
+  En iyi agirliklar geri yuklendi (epoch 29)
+
+Fold 0 test setinde degerlendiriliyor (epoch 29)...
+
+--- RESNET-3CH Fold 0 - Segment ---
+  accuracy  : 0.6168
+  precision : 0.6164  (weighted)
+  recall    : 0.6168  (weighted)
+  f1        : 0.6080  (weighted)
+  kappa     : 0.5199
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 292      0.462    0.479  0.471
+  buselik                     295      0.461    0.339  0.391
+  hicaz                       326      0.606    0.402  0.483
+  hicazkar                    382      0.573    0.615  0.593
+  hüzzam                     298      0.439    0.520  0.476
+  kürdilihicazkar            352      0.716    0.537  0.614
+  mahur                       378      0.531    0.272  0.360
+  nihavent                    307      0.821    0.837  0.829
+  rast                        315      0.357    0.356  0.356
+  saba                        323      0.735    0.514  0.605
+  segah                       332      0.475    0.690  0.563
+  dugah                      2279      0.699    0.794  0.744
+
+--- RESNET-3CH Fold 0 - Sarki ---
+  accuracy  : 0.7182
+  precision : 0.7175  (weighted)
+  recall    : 0.7182  (weighted)
+  f1        : 0.7064  (weighted)
+  kappa     : 0.6500
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  26      0.625    0.577  0.600
+  buselik                      23      0.667    0.435  0.526
+  hicaz                        24      0.812    0.542  0.650
+  hicazkar                     30      0.767    0.767  0.767
+  hüzzam                      23      0.667    0.783  0.720
+  kürdilihicazkar             25      0.810    0.680  0.739
+  mahur                        33      0.667    0.364  0.471
+  nihavent                     24      0.913    0.875  0.894
+  rast                         24      0.474    0.375  0.419
+  saba                         23      0.833    0.652  0.732
+  segah                        26      0.645    0.769  0.702
+  dugah                       159      0.722    0.899  0.801
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi1/results_resnet/resnet_3ch_fold0_results.json
+
+############################################################
+# RESNET-3CH FOLD 1 / 4
+# Input: 3-kanal PNG (R=mel, G=MFCC, B=chroma)
+############################################################
+Cihaz: cuda
+Fold dosyasi: /content/folds_spec.json
+train=18918  val=3546  test=5738  sinif=12
+Toplam parametre: 11,310,924
+Egitilebilir parametre: 10,627,852  (94.0%)
+Donduruluyor: conv1, bn1, layer1, layer2, layer3
+Egitiliyor:   layer4, fc (yeni head)
+Sinif basina segment: [1074, 956, 1088, 1360, 1128, 1112, 1198, 1128, 1014, 1051, 1228, 6581]
+Max epoch: 50  patience: 7  LR: 0.0001
+
+  Epoch   1/50 | train loss=2.4269 acc=0.1492 | val loss=2.4871 acc=0.2070  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.0948 acc=0.2665 | val loss=2.2179 acc=0.3139  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=1.7216 acc=0.4029 | val loss=1.9925 acc=0.4224  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=1.4165 acc=0.5126 | val loss=1.8984 acc=0.4695  <- en iyi (val_loss dustu)
+  Epoch   5/50 | train loss=1.1844 acc=0.6111 | val loss=2.0536 acc=0.4921  (iyilesme yok: 1/7)
+  Epoch   6/50 | train loss=1.0049 acc=0.6860 | val loss=2.0068 acc=0.5110  (iyilesme yok: 2/7)
+  Epoch   7/50 | train loss=0.8821 acc=0.7417 | val loss=2.0049 acc=0.5640  (iyilesme yok: 3/7)
+  Epoch   8/50 | train loss=0.7872 acc=0.7915 | val loss=1.8235 acc=0.5750  <- en iyi (val_loss dustu)
+  Epoch   9/50 | train loss=0.7244 acc=0.8294 | val loss=1.7763 acc=0.5922  <- en iyi (val_loss dustu)
+  Epoch  10/50 | train loss=0.6779 acc=0.8538 | val loss=1.7510 acc=0.5990  <- en iyi (val_loss dustu)
+  Epoch  11/50 | train loss=0.6376 acc=0.8803 | val loss=1.8436 acc=0.6139  (iyilesme yok: 1/7)
+  Epoch  12/50 | train loss=0.6141 acc=0.8954 | val loss=1.7005 acc=0.6469  <- en iyi (val_loss dustu)
+  Epoch  13/50 | train loss=0.5889 acc=0.9101 | val loss=1.7411 acc=0.6297  (iyilesme yok: 1/7)
+  Epoch  14/50 | train loss=0.5657 acc=0.9243 | val loss=1.6724 acc=0.6385  <- en iyi (val_loss dustu)
+  Epoch  15/50 | train loss=0.5543 acc=0.9307 | val loss=1.6695 acc=0.6280  <- en iyi (val_loss dustu)
+  Epoch  16/50 | train loss=0.5331 acc=0.9429 | val loss=1.6551 acc=0.6466  <- en iyi (val_loss dustu)
+  Epoch  17/50 | train loss=0.5325 acc=0.9432 | val loss=1.7382 acc=0.6289  (iyilesme yok: 1/7)
+  Epoch  18/50 | train loss=0.5186 acc=0.9536 | val loss=1.6484 acc=0.6371  <- en iyi (val_loss dustu)
+  Epoch  19/50 | train loss=0.5072 acc=0.9573 | val loss=1.7163 acc=0.6173  (iyilesme yok: 1/7)
+  Epoch  20/50 | train loss=0.5029 acc=0.9597 | val loss=1.6571 acc=0.6351  (iyilesme yok: 2/7)
+  Epoch  21/50 | train loss=0.4943 acc=0.9648 | val loss=1.6511 acc=0.6407  (iyilesme yok: 3/7)
+  Epoch  22/50 | train loss=0.4897 acc=0.9654 | val loss=1.6336 acc=0.6325  <- en iyi (val_loss dustu)
+  Epoch  23/50 | train loss=0.4762 acc=0.9735 | val loss=1.6500 acc=0.6424  (iyilesme yok: 1/7)
+  Epoch  24/50 | train loss=0.4751 acc=0.9719 | val loss=1.6315 acc=0.6418  <- en iyi (val_loss dustu)
+  Epoch  25/50 | train loss=0.4676 acc=0.9759 | val loss=1.6310 acc=0.6517  <- en iyi (val_loss dustu)
+  Epoch  26/50 | train loss=0.4649 acc=0.9764 | val loss=1.6306 acc=0.6376  <- en iyi (val_loss dustu)
+  Epoch  27/50 | train loss=0.4608 acc=0.9776 | val loss=1.6510 acc=0.6356  (iyilesme yok: 1/7)
+  Epoch  28/50 | train loss=0.4530 acc=0.9818 | val loss=1.6458 acc=0.6466  (iyilesme yok: 2/7)
+  Epoch  29/50 | train loss=0.4528 acc=0.9806 | val loss=1.6677 acc=0.6368  (iyilesme yok: 3/7)
+  Epoch  30/50 | train loss=0.4555 acc=0.9789 | val loss=1.6881 acc=0.6300  (iyilesme yok: 4/7)
+  Epoch  31/50 | train loss=0.4475 acc=0.9831 | val loss=1.6310 acc=0.6433  (iyilesme yok: 5/7)
+  Epoch  32/50 | train loss=0.4418 acc=0.9851 | val loss=1.6724 acc=0.6320  (iyilesme yok: 6/7)
+  Epoch  33/50 | train loss=0.4422 acc=0.9856 | val loss=1.6632 acc=0.6435  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 26 (val_loss=1.6306)
+  En iyi agirliklar geri yuklendi (epoch 26)
+
+Fold 1 test setinde degerlendiriliyor (epoch 26)...
+
+--- RESNET-3CH Fold 1 - Segment ---
+  accuracy  : 0.6203
+  precision : 0.6253  (weighted)
+  recall    : 0.6203  (weighted)
+  f1        : 0.6117  (weighted)
+  kappa     : 0.5443
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 325      0.508    0.492  0.500
+  buselik                     299      0.604    0.455  0.519
+  hicaz                       320      0.462    0.494  0.477
+  hicazkar                    435      0.705    0.549  0.618
+  hüzzam                     352      0.647    0.395  0.490
+  kürdilihicazkar            330      0.491    0.524  0.507
+  mahur                       387      0.531    0.377  0.441
+  nihavent                    328      0.839    0.909  0.873
+  rast                        295      0.430    0.356  0.390
+  saba                        516      0.878    0.587  0.704
+  segah                       342      0.559    0.605  0.581
+  dugah                      1809      0.633    0.826  0.717
+
+--- RESNET-3CH Fold 1 - Sarki ---
+  accuracy  : 0.6979
+  precision : 0.7085  (weighted)
+  recall    : 0.6979  (weighted)
+  f1        : 0.6901  (weighted)
+  kappa     : 0.6251
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  26      0.600    0.577  0.588
+  buselik                      23      0.750    0.522  0.615
+  hicaz                        24      0.640    0.667  0.653
+  hicazkar                     30      0.840    0.700  0.764
+  hüzzam                      23      0.846    0.478  0.611
+  kürdilihicazkar             24      0.516    0.667  0.582
+  mahur                        32      0.632    0.375  0.471
+  nihavent                     24      0.846    0.917  0.880
+  rast                         24      0.524    0.458  0.489
+  saba                         23      1.000    0.609  0.757
+  segah                        26      0.654    0.654  0.654
+  dugah                       158      0.704    0.873  0.780
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi1/results_resnet/resnet_3ch_fold1_results.json
+
+############################################################
+# RESNET-3CH FOLD 2 / 4
+# Input: 3-kanal PNG (R=mel, G=MFCC, B=chroma)
+############################################################
+Cihaz: cuda
+Fold dosyasi: /content/folds_spec.json
+train=19059  val=3775  test=5368  sinif=12
+Toplam parametre: 11,310,924
+Egitilebilir parametre: 10,627,852  (94.0%)
+Donduruluyor: conv1, bn1, layer1, layer2, layer3
+Egitiliyor:   layer4, fc (yeni head)
+Sinif basina segment: [1080, 1012, 1104, 1230, 1146, 1186, 1203, 1119, 1048, 1312, 1085, 6534]
+Max epoch: 50  patience: 7  LR: 0.0001
+
+  Epoch   1/50 | train loss=2.4043 acc=0.1597 | val loss=2.4073 acc=0.1857  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.0815 acc=0.2838 | val loss=2.1787 acc=0.3205  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=1.6980 acc=0.4252 | val loss=2.0653 acc=0.4058  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=1.3934 acc=0.5370 | val loss=1.9178 acc=0.4927  <- en iyi (val_loss dustu)
+  Epoch   5/50 | train loss=1.1642 acc=0.6278 | val loss=1.9674 acc=0.5377  (iyilesme yok: 1/7)
+  Epoch   6/50 | train loss=0.9780 acc=0.7086 | val loss=1.9399 acc=0.5513  (iyilesme yok: 2/7)
+  Epoch   7/50 | train loss=0.8589 acc=0.7632 | val loss=2.0193 acc=0.5452  (iyilesme yok: 3/7)
+  Epoch   8/50 | train loss=0.7743 acc=0.8057 | val loss=1.8557 acc=0.6143  <- en iyi (val_loss dustu)
+  Epoch   9/50 | train loss=0.7196 acc=0.8333 | val loss=1.8291 acc=0.5987  <- en iyi (val_loss dustu)
+  Epoch  10/50 | train loss=0.6666 acc=0.8628 | val loss=1.9307 acc=0.5952  (iyilesme yok: 1/7)
+  Epoch  11/50 | train loss=0.6355 acc=0.8812 | val loss=1.8236 acc=0.6072  <- en iyi (val_loss dustu)
+  Epoch  12/50 | train loss=0.6020 acc=0.8991 | val loss=1.7605 acc=0.6326  <- en iyi (val_loss dustu)
+  Epoch  13/50 | train loss=0.5816 acc=0.9138 | val loss=1.7735 acc=0.6185  (iyilesme yok: 1/7)
+  Epoch  14/50 | train loss=0.5630 acc=0.9264 | val loss=1.7767 acc=0.6265  (iyilesme yok: 2/7)
+  Epoch  15/50 | train loss=0.5502 acc=0.9323 | val loss=1.7533 acc=0.6291  <- en iyi (val_loss dustu)
+  Epoch  16/50 | train loss=0.5340 acc=0.9411 | val loss=1.7292 acc=0.6392  <- en iyi (val_loss dustu)
+  Epoch  17/50 | train loss=0.5223 acc=0.9482 | val loss=1.7341 acc=0.6156  (iyilesme yok: 1/7)
+  Epoch  18/50 | train loss=0.5107 acc=0.9552 | val loss=1.6414 acc=0.6501  <- en iyi (val_loss dustu)
+  Epoch  19/50 | train loss=0.5004 acc=0.9583 | val loss=1.6508 acc=0.6527  (iyilesme yok: 1/7)
+  Epoch  20/50 | train loss=0.4938 acc=0.9646 | val loss=1.6937 acc=0.6580  (iyilesme yok: 2/7)
+  Epoch  21/50 | train loss=0.4942 acc=0.9643 | val loss=1.6428 acc=0.6556  (iyilesme yok: 3/7)
+  Epoch  22/50 | train loss=0.4807 acc=0.9705 | val loss=1.6985 acc=0.6453  (iyilesme yok: 4/7)
+  Epoch  23/50 | train loss=0.4770 acc=0.9711 | val loss=1.6357 acc=0.6575  <- en iyi (val_loss dustu)
+  Epoch  24/50 | train loss=0.4706 acc=0.9741 | val loss=1.6528 acc=0.6442  (iyilesme yok: 1/7)
+  Epoch  25/50 | train loss=0.4722 acc=0.9729 | val loss=1.6798 acc=0.6376  (iyilesme yok: 2/7)
+  Epoch  26/50 | train loss=0.4614 acc=0.9767 | val loss=1.7015 acc=0.6514  (iyilesme yok: 3/7)
+  Epoch  27/50 | train loss=0.4589 acc=0.9781 | val loss=1.7005 acc=0.6543  (iyilesme yok: 4/7)
+  Epoch  28/50 | train loss=0.4552 acc=0.9804 | val loss=1.6501 acc=0.6649  (iyilesme yok: 5/7)
+  Epoch  29/50 | train loss=0.4524 acc=0.9797 | val loss=1.6966 acc=0.6514  (iyilesme yok: 6/7)
+  Epoch  30/50 | train loss=0.4442 acc=0.9848 | val loss=1.6850 acc=0.6559  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 23 (val_loss=1.6357)
+  En iyi agirliklar geri yuklendi (epoch 23)
+
+Fold 2 test setinde degerlendiriliyor (epoch 23)...
+
+--- RESNET-3CH Fold 2 - Segment ---
+  accuracy  : 0.5861
+  precision : 0.5862  (weighted)
+  recall    : 0.5861  (weighted)
+  f1        : 0.5776  (weighted)
+  kappa     : 0.5034
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 397      0.495    0.277  0.355
+  buselik                     252      0.464    0.433  0.448
+  hicaz                       305      0.463    0.492  0.477
+  hicazkar                    450      0.714    0.587  0.644
+  hüzzam                     334      0.596    0.410  0.486
+  kürdilihicazkar            316      0.611    0.506  0.554
+  mahur                       337      0.618    0.623  0.620
+  nihavent                    328      0.914    0.750  0.824
+  rast                        304      0.358    0.312  0.334
+  saba                        315      0.640    0.632  0.636
+  segah                       338      0.430    0.429  0.430
+  dugah                      1692      0.600    0.781  0.678
+
+--- RESNET-3CH Fold 2 - Sarki ---
+  accuracy  : 0.7028
+  precision : 0.7071  (weighted)
+  recall    : 0.7028  (weighted)
+  f1        : 0.6928  (weighted)
+  kappa     : 0.6260
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  25      0.476    0.400  0.435
+  buselik                      23      0.706    0.522  0.600
+  hicaz                        24      0.714    0.625  0.667
+  hicazkar                     30      0.880    0.733  0.800
+  hüzzam                      23      0.647    0.478  0.550
+  kürdilihicazkar             24      0.812    0.542  0.650
+  mahur                        32      0.815    0.688  0.746
+  nihavent                     24      0.950    0.792  0.864
+  rast                         24      0.500    0.333  0.400
+  saba                         23      0.800    0.696  0.744
+  segah                        26      0.609    0.538  0.571
+  dugah                       156      0.678    0.917  0.779
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi1/results_resnet/resnet_3ch_fold2_results.json
+
+############################################################
+# RESNET-3CH FOLD 3 / 4
+# Input: 3-kanal PNG (R=mel, G=MFCC, B=chroma)
+############################################################
+Cihaz: cuda
+Fold dosyasi: /content/folds_spec.json
+train=18635  val=3510  test=6057  sinif=12
+Toplam parametre: 11,310,924
+Egitilebilir parametre: 10,627,852  (94.0%)
+Donduruluyor: conv1, bn1, layer1, layer2, layer3
+Egitiliyor:   layer4, fc (yeni head)
+Sinif basina segment: [1130, 945, 1071, 1292, 1216, 1149, 1166, 1099, 1043, 982, 1053, 6489]
+Max epoch: 50  patience: 7  LR: 0.0001
+
+  Epoch   1/50 | train loss=2.4190 acc=0.1511 | val loss=2.2760 acc=0.2285  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.0877 acc=0.2741 | val loss=2.0978 acc=0.3527  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=1.7066 acc=0.4084 | val loss=1.7081 acc=0.4809  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=1.3986 acc=0.5237 | val loss=1.8443 acc=0.4821  (iyilesme yok: 1/7)
+  Epoch   5/50 | train loss=1.1551 acc=0.6233 | val loss=1.8869 acc=0.5442  (iyilesme yok: 2/7)
+  Epoch   6/50 | train loss=0.9901 acc=0.6958 | val loss=1.8554 acc=0.5473  (iyilesme yok: 3/7)
+  Epoch   7/50 | train loss=0.8695 acc=0.7440 | val loss=1.9055 acc=0.5746  (iyilesme yok: 4/7)
+  Epoch   8/50 | train loss=0.7887 acc=0.7903 | val loss=1.9245 acc=0.5652  (iyilesme yok: 5/7)
+  Epoch   9/50 | train loss=0.7202 acc=0.8277 | val loss=1.8839 acc=0.5823  (iyilesme yok: 6/7)
+  Epoch  10/50 | train loss=0.6701 acc=0.8567 | val loss=1.9392 acc=0.5632  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 3 (val_loss=1.7081)
+  En iyi agirliklar geri yuklendi (epoch 3)
+
+Fold 3 test setinde degerlendiriliyor (epoch 3)...
+
+--- RESNET-3CH Fold 3 - Segment ---
+  accuracy  : 0.4167
+  precision : 0.5509  (weighted)
+  recall    : 0.4167  (weighted)
+  f1        : 0.4276  (weighted)
+  kappa     : 0.3503
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 328      0.206    0.540  0.298
+  buselik                     295      0.209    0.478  0.290
+  hicaz                       322      0.367    0.357  0.362
+  hicazkar                    392      0.596    0.610  0.603
+  hüzzam                     327      0.420    0.361  0.388
+  kürdilihicazkar            319      0.355    0.580  0.440
+  mahur                       384      0.332    0.312  0.322
+  nihavent                    305      0.700    0.780  0.738
+  rast                        279      0.205    0.222  0.213
+  saba                        411      0.370    0.572  0.449
+  segah                       389      0.364    0.483  0.415
+  dugah                      2306      0.830    0.306  0.447
+
+--- RESNET-3CH Fold 3 - Sarki ---
+  accuracy  : 0.4685
+  precision : 0.6190  (weighted)
+  recall    : 0.4685  (weighted)
+  f1        : 0.4678  (weighted)
+  kappa     : 0.4154
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  25      0.258    0.680  0.374
+  buselik                      23      0.230    0.609  0.333
+  hicaz                        24      0.474    0.375  0.419
+  hicazkar                     29      0.800    0.828  0.814
+  hüzzam                      23      0.588    0.435  0.500
+  kürdilihicazkar             24      0.395    0.708  0.507
+  mahur                        32      0.565    0.406  0.473
+  nihavent                     23      0.714    0.870  0.784
+  rast                         23      0.292    0.304  0.298
+  saba                         22      0.378    0.636  0.475
+  segah                        26      0.441    0.577  0.500
+  dugah                       155      0.872    0.265  0.406
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi1/results_resnet/resnet_3ch_fold3_results.json
+
+############################################################
+# RESNET-3CH FOLD 4 / 4
+# Input: 3-kanal PNG (R=mel, G=MFCC, B=chroma)
+############################################################
+Cihaz: cuda
+Fold dosyasi: /content/folds_spec.json
+train=19587  val=3455  test=5160  sinif=12
+Toplam parametre: 11,310,924
+Egitilebilir parametre: 10,627,852  (94.0%)
+Donduruluyor: conv1, bn1, layer1, layer2, layer3
+Egitiliyor:   layer4, fc (yeni head)
+Sinif basina segment: [1180, 980, 1142, 1471, 1171, 1117, 1332, 1085, 946, 1410, 1200, 6553]
+Max epoch: 50  patience: 7  LR: 0.0001
+
+  Epoch   1/50 | train loss=2.4050 acc=0.1547 | val loss=2.3328 acc=0.1936  <- en iyi (val_loss dustu)
+  Epoch   2/50 | train loss=2.0476 acc=0.2968 | val loss=2.1701 acc=0.2915  <- en iyi (val_loss dustu)
+  Epoch   3/50 | train loss=1.6655 acc=0.4427 | val loss=2.1548 acc=0.3496  <- en iyi (val_loss dustu)
+  Epoch   4/50 | train loss=1.3477 acc=0.5570 | val loss=1.9633 acc=0.4677  <- en iyi (val_loss dustu)
+  Epoch   5/50 | train loss=1.1183 acc=0.6526 | val loss=1.9438 acc=0.5010  <- en iyi (val_loss dustu)
+  Epoch   6/50 | train loss=0.9636 acc=0.7203 | val loss=2.0821 acc=0.5094  (iyilesme yok: 1/7)
+  Epoch   7/50 | train loss=0.8494 acc=0.7725 | val loss=2.0451 acc=0.5493  (iyilesme yok: 2/7)
+  Epoch   8/50 | train loss=0.7701 acc=0.8097 | val loss=2.0495 acc=0.5340  (iyilesme yok: 3/7)
+  Epoch   9/50 | train loss=0.6953 acc=0.8521 | val loss=1.9130 acc=0.5942  <- en iyi (val_loss dustu)
+  Epoch  10/50 | train loss=0.6563 acc=0.8707 | val loss=1.9398 acc=0.5763  (iyilesme yok: 1/7)
+  Epoch  11/50 | train loss=0.6244 acc=0.8926 | val loss=1.9038 acc=0.5902  <- en iyi (val_loss dustu)
+  Epoch  12/50 | train loss=0.5973 acc=0.9081 | val loss=1.8583 acc=0.6205  <- en iyi (val_loss dustu)
+  Epoch  13/50 | train loss=0.5770 acc=0.9171 | val loss=1.8684 acc=0.5624  (iyilesme yok: 1/7)
+  Epoch  14/50 | train loss=0.5591 acc=0.9279 | val loss=1.8366 acc=0.5988  <- en iyi (val_loss dustu)
+  Epoch  15/50 | train loss=0.5340 acc=0.9417 | val loss=1.8367 acc=0.5887  (iyilesme yok: 1/7)
+  Epoch  16/50 | train loss=0.5261 acc=0.9460 | val loss=1.7993 acc=0.6188  <- en iyi (val_loss dustu)
+  Epoch  17/50 | train loss=0.5223 acc=0.9509 | val loss=1.7954 acc=0.6165  <- en iyi (val_loss dustu)
+  Epoch  18/50 | train loss=0.5108 acc=0.9577 | val loss=1.8629 acc=0.5980  (iyilesme yok: 1/7)
+  Epoch  19/50 | train loss=0.4998 acc=0.9634 | val loss=1.7725 acc=0.6197  <- en iyi (val_loss dustu)
+  Epoch  20/50 | train loss=0.4878 acc=0.9655 | val loss=1.7759 acc=0.6041  (iyilesme yok: 1/7)
+  Epoch  21/50 | train loss=0.4851 acc=0.9675 | val loss=1.7858 acc=0.6049  (iyilesme yok: 2/7)
+  Epoch  22/50 | train loss=0.4757 acc=0.9719 | val loss=1.7015 acc=0.6492  <- en iyi (val_loss dustu)
+  Epoch  23/50 | train loss=0.4675 acc=0.9752 | val loss=1.7801 acc=0.6295  (iyilesme yok: 1/7)
+  Epoch  24/50 | train loss=0.4729 acc=0.9711 | val loss=1.7637 acc=0.6232  (iyilesme yok: 2/7)
+  Epoch  25/50 | train loss=0.4608 acc=0.9769 | val loss=1.7853 acc=0.6113  (iyilesme yok: 3/7)
+  Epoch  26/50 | train loss=0.4600 acc=0.9793 | val loss=1.7431 acc=0.6324  (iyilesme yok: 4/7)
+  Epoch  27/50 | train loss=0.4529 acc=0.9805 | val loss=1.7517 acc=0.6425  (iyilesme yok: 5/7)
+  Epoch  28/50 | train loss=0.4469 acc=0.9827 | val loss=1.7832 acc=0.6304  (iyilesme yok: 6/7)
+  Epoch  29/50 | train loss=0.4474 acc=0.9811 | val loss=1.8101 acc=0.6249  (iyilesme yok: 7/7)
+
+  Erken durdurma: val_loss 7 epoch boyunca iyilesmedi.
+  En iyi model: epoch 22 (val_loss=1.7015)
+  En iyi agirliklar geri yuklendi (epoch 22)
+
+Fold 4 test setinde degerlendiriliyor (epoch 22)...
+
+--- RESNET-3CH Fold 4 - Segment ---
+  accuracy  : 0.6260
+  precision : 0.6253  (weighted)
+  recall    : 0.6260  (weighted)
+  f1        : 0.6146  (weighted)
+  kappa     : 0.5481
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                 347      0.615    0.455  0.523
+  buselik                     314      0.668    0.455  0.542
+  hicaz                       319      0.625    0.502  0.557
+  hicazkar                    330      0.508    0.652  0.571
+  hüzzam                     331      0.586    0.462  0.517
+  kürdilihicazkar            348      0.515    0.454  0.482
+  mahur                       290      0.511    0.638  0.567
+  nihavent                    324      0.817    0.824  0.820
+  rast                        286      0.548    0.301  0.388
+  saba                        268      0.665    0.451  0.538
+  segah                       317      0.669    0.549  0.603
+  dugah                      1686      0.655    0.836  0.734
+
+--- RESNET-3CH Fold 4 - Sarki ---
+  accuracy  : 0.7143
+  precision : 0.7149  (weighted)
+  recall    : 0.7143  (weighted)
+  f1        : 0.7028  (weighted)
+  kappa     : 0.6462
+
+  sinif                    destek  precision   recall     f1
+  --------------------------------------------------------
+  acemaşiran                  25      0.714    0.600  0.652
+  buselik                      23      0.688    0.478  0.564
+  hicaz                        24      0.824    0.583  0.683
+  hicazkar                     29      0.657    0.793  0.719
+  hüzzam                      23      0.650    0.565  0.605
+  kürdilihicazkar             24      0.522    0.500  0.511
+  mahur                        32      0.611    0.688  0.647
+  nihavent                     23      0.800    0.870  0.833
+  rast                         23      0.700    0.304  0.424
+  saba                         22      0.706    0.545  0.615
+  segah                        25      0.842    0.640  0.727
+  dugah                       154      0.745    0.909  0.819
+
+Sonuclar kaydedildi -> /content/drive/MyDrive/makam_projesi1/results_resnet/resnet_3ch_fold4_results.json
