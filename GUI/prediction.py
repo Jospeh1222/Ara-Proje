@@ -1,3 +1,11 @@
+"""
+Makam siniflandirma - model yukleme ve tahmin modulu
+
+V3.2:
+  - exp4: 20 sinif (genel), sadece CNN, "featured" (default expanded)
+  - exp1,2,3: 16/16/12 sinif, ResNet + CNN, "collapsible" (default kapali)
+"""
+
 import json
 from pathlib import Path
 import numpy as np
@@ -5,7 +13,6 @@ import torch
 import torch.nn.functional as F
 
 
-#ImageNet normalizasyon (ResNet icin)
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 IMAGENET_STD  = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
@@ -14,7 +21,6 @@ IMAGENET_STD  = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
 
 def _extract_state_dict(ckpt):
-    """Cesitli checkpoint formatlarindan state_dict cikar."""
     if not isinstance(ckpt, dict):
         return ckpt
 
@@ -34,20 +40,16 @@ def _extract_state_dict(ckpt):
 
 
 def _normalize_segments(segment_images: list, mean, std) -> torch.Tensor:
-    """
-    Raw uint8 RGB images -> normalized tensor (N, 3, H, W).
-    mean, std: scalar veya per-channel (3,)
-    """
     if len(segment_images) == 0:
         raise ValueError("Bos segment listesi")
 
-    arr = np.stack(segment_images, axis=0).astype(np.float32) / 255.0  # (N,H,W,3)
+    arr = np.stack(segment_images, axis=0).astype(np.float32) / 255.0
 
     mean = np.asarray(mean, dtype=np.float32)
     std = np.asarray(std, dtype=np.float32)
     arr = (arr - mean) / std
 
-    arr = arr.transpose(0, 3, 1, 2)  # (N,3,H,W)
+    arr = arr.transpose(0, 3, 1, 2)
     return torch.from_numpy(arr.astype(np.float32))
 
 
@@ -57,11 +59,15 @@ def _normalize_segments(segment_images: list, mean, std) -> torch.Tensor:
 class ModelEntry:
 
     def __init__(self, display_name: str, short_name: str, exp_dir: Path,
-                 model_type: str):
+                 model_type: str, exp_short: str, exp_label: str,
+                 is_featured: bool = False):
         self.display_name = display_name
         self.short_name = short_name
         self.exp_dir = Path(exp_dir)
         self.model_type = model_type
+        self.exp_short = exp_short      # "exp1", "exp4" vs
+        self.exp_label = exp_label      # "16 Orijinal Sınıf" vs
+        self.is_featured = is_featured  # exp4 icin True
 
         self.is_available = False
         self.is_loaded = False
@@ -84,6 +90,17 @@ class ModelEntry:
         self.label_to_idx = data['label_to_idx']
         self.idx_to_label = {v: k for k, v in self.label_to_idx.items()}
         self.n_classes = len(self.label_to_idx)
+
+
+    def get_class_list(self) -> list:
+        """Sinif isim listesi (info popup icin)"""
+        if self.label_to_idx is None:
+            #Etiketleri yuklemek icin sadece dosyayi oku, modeli yukleme
+            try:
+                self._load_labels()
+            except Exception:
+                return []
+        return sorted(self.label_to_idx.keys(), key=lambda k: self.label_to_idx[k])
 
 
     def _load_resnet(self):
@@ -113,15 +130,12 @@ class ModelEntry:
 
         config_path = Path("config_cnn.py")
         if not config_path.exists():
-            raise FileNotFoundError(
-                "config_cnn.py yok (cnn_model.py import etmeye calisiyor)"
-            )
+            raise FileNotFoundError("config_cnn.py yok")
 
         ckpt_path = self.exp_dir / "cnn.pt"
         if not ckpt_path.exists():
             raise FileNotFoundError(f"cnn.pt yok: {ckpt_path}")
 
-        #Stats dosyasi
         stats_path = self.exp_dir / "cnn_stats.json"
         if not stats_path.exists():
             alt = list(self.exp_dir.glob("stats_spec_fold*.json"))
@@ -129,9 +143,7 @@ class ModelEntry:
                 stats_path = alt[0]
             else:
                 raise FileNotFoundError(
-                    f"cnn_stats.json yok: {stats_path}\n"
-                    f"En iyi fold'un stats_spec_fold*.json dosyasini "
-                    f"cnn_stats.json olarak kopyala"
+                    f"cnn_stats.json yok: {stats_path}"
                 )
 
         with open(stats_path, encoding='utf-8') as f:
@@ -139,8 +151,7 @@ class ModelEntry:
 
         if 'mean' not in stats or 'std' not in stats:
             raise ValueError(
-                f"stats dosyasinda 'mean' ve 'std' yok: {stats_path}\n"
-                f"Mevcut keys: {list(stats.keys())}"
+                f"stats dosyasinda 'mean' ve 'std' yok: {list(stats.keys())}"
             )
 
         self._norm_mean = stats['mean']
@@ -181,10 +192,6 @@ class ModelEntry:
 
 
     def predict(self, segment_images: list) -> dict:
-        """
-        Args:
-            segment_images: list of np.ndarray shape (224, 224, 3) uint8
-        """
         if not self.is_available or self.model is None:
             return None
 
@@ -219,29 +226,37 @@ class ModelEntry:
 
 
 def build_model_registry(experiments_dir) -> list:
+    """Model registry. exp4 'featured' (default expanded), digerleri collapsible."""
     experiments_dir = Path(experiments_dir)
 
+    #(klasor, etiket, kisa, model_tipleri, featured)
     experiments = [
-        ('exp1_original16', '16 Orijinal Sınıf',  'exp1'),
-        ('exp2_modified16', '16 Modifiye Sınıf',  'exp2'),
-        ('exp3_dugah12',    '12 Sınıf (Dugâh)',   'exp3'),
+        ('exp4_genel20',    '20 Sınıf (Genel)',   'exp4', ['cnn'],             True),
+        ('exp1_original16', '16 Orijinal Sınıf',  'exp1', ['resnet', 'cnn'],  False),
+        ('exp2_modified16', '16 Modifiye Sınıf',  'exp2', ['resnet', 'cnn'],  False),
+        ('exp3_dugah12',    '12 Sınıf (Dugâh)',   'exp3', ['resnet', 'cnn'],  False),
     ]
 
     registry = []
-    for exp_folder, exp_label, exp_short in experiments:
+    for exp_folder, exp_label, exp_short, model_types, is_featured in experiments:
         exp_dir = experiments_dir / exp_folder
 
-        registry.append(ModelEntry(
-            display_name=f"ResNet — {exp_label}",
-            short_name=f"resnet_{exp_short}",
-            exp_dir=exp_dir,
-            model_type="resnet",
-        ))
-        registry.append(ModelEntry(
-            display_name=f"Custom CNN — {exp_label}",
-            short_name=f"cnn_{exp_short}",
-            exp_dir=exp_dir,
-            model_type="cnn",
-        ))
+        for mt in model_types:
+            if mt == 'resnet':
+                display = f"ResNet"
+                short = f"resnet_{exp_short}"
+            else:
+                display = f"Custom CNN"
+                short = f"cnn_{exp_short}"
+
+            registry.append(ModelEntry(
+                display_name=display,
+                short_name=short,
+                exp_dir=exp_dir,
+                model_type=mt,
+                exp_short=exp_short,
+                exp_label=exp_label,
+                is_featured=is_featured,
+            ))
 
     return registry

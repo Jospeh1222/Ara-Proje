@@ -4,14 +4,14 @@ from pathlib import Path
 from PyQt6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QPushButton, QLabel, QSlider, QFileDialog, QFrame, QProgressBar,
-    QScrollArea,
+    QScrollArea, QToolTip, QSizePolicy,
 )
 from PyQt6.QtCore import (
-    Qt, QUrl, QSize, QRectF, QTimer, QPointF, QThread, pyqtSignal,
+    Qt, QUrl, QSize, QRectF, QTimer, QPointF, QThread, pyqtSignal, QEvent,
 )
 from PyQt6.QtGui import (
     QPalette, QColor, QPainter, QPainterPath, QPen, QBrush, QIcon, QPixmap,
-    QConicalGradient,
+    QConicalGradient, QFont, QCursor,
 )
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput
 
@@ -35,6 +35,8 @@ COLORS = {
     "vinyl_label":    "#C8102E",
     "progress_bg":    "#3A3A3C",
     "card_inner":     "#3A3A3C",
+    "featured_bg":    "#2C2C2E",
+    "featured_border":"#C8102E",
 }
 
 FONT_FAMILY = '-apple-system, "SF Pro Display", "Segoe UI", Inter, system-ui, sans-serif'
@@ -57,16 +59,24 @@ QFrame#card {{
     border: 1px solid {COLORS['border']};
 }}
 
-QFrame#resultCard {{
+QFrame#expCardFeatured {{
+    background-color: {COLORS['featured_bg']};
+    border-radius: 14px;
+    border: 1px solid {COLORS['featured_border']};
+}}
+
+QFrame#expCardCollapsible {{
     background-color: {COLORS['card_inner']};
     border-radius: 12px;
     border: none;
 }}
 
-QFrame#resultCardUnavailable {{
-    background-color: {COLORS['bg_tertiary']};
-    border-radius: 12px;
-    border: 1px dashed {COLORS['border']};
+QWidget#expCardHeader {{
+    background-color: transparent;
+}}
+QWidget#expCardHeader:hover {{
+    background-color: rgba(255,255,255,0.04);
+    border-radius: 8px;
 }}
 
 QLabel#title {{
@@ -120,40 +130,45 @@ QLabel#statusText {{
     font-weight: 500;
 }}
 
-QLabel#modelName {{
-    color: {COLORS['text_secondary']};
+QLabel#expLabel {{
+    color: {COLORS['text_primary']};
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}}
+
+QLabel#expLabelFeatured {{
+    color: {COLORS['accent']};
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
 }}
 
-QLabel#topMakam {{
+QLabel#expTitle {{
     color: {COLORS['text_primary']};
-    font-size: 22px;
+    font-size: 17px;
     font-weight: 700;
 }}
 
-QLabel#topProb {{
-    color: {COLORS['accent']};
-    font-size: 22px;
-    font-weight: 700;
-}}
-
-QLabel#runnerUp {{
+QLabel#modelName {{
     color: {COLORS['text_secondary']};
-    font-size: 12px;
-}}
-
-QLabel#runnerUpProb {{
-    color: {COLORS['text_secondary']};
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
 }}
 
 QLabel#unavailableText {{
     color: {COLORS['text_tertiary']};
-    font-size: 13px;
+    font-size: 12px;
     font-style: italic;
+}}
+
+QLabel#chevron {{
+    color: {COLORS['text_secondary']};
+    font-size: 14px;
+    font-weight: 600;
 }}
 
 QPushButton#primaryButton {{
@@ -194,11 +209,11 @@ QPushButton#playButton {{
     background-color: {COLORS['accent']};
     color: white;
     border: none;
-    border-radius: 20px;
-    min-width: 72px;
-    max-width: 72px;
-    min-height: 72px;
-    max-height: 72px;
+    border-radius: 22px;
+    min-width: 76px;
+    max-width: 76px;
+    min-height: 76px;
+    max-height: 76px;
 }}
 QPushButton#playButton:hover {{
     background-color: {COLORS['accent_hover']};
@@ -210,11 +225,11 @@ QPushButton#playButton:disabled {{
 QPushButton#secondaryButton {{
     background-color: transparent;
     border: none;
-    border-radius: 16px;
-    min-width: 52px;
-    max-width: 52px;
-    min-height: 52px;
-    max-height: 52px;
+    border-radius: 18px;
+    min-width: 56px;
+    max-width: 56px;
+    min-height: 56px;
+    max-height: 56px;
 }}
 QPushButton#secondaryButton:hover {{
     background-color: {COLORS['bg_tertiary']};
@@ -275,6 +290,15 @@ QScrollBar::handle:vertical {{
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{
     height: 0;
 }}
+
+QToolTip {{
+    background-color: {COLORS['bg_secondary']};
+    color: {COLORS['text_primary']};
+    border: 1px solid {COLORS['border']};
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+}}
 """
 
 
@@ -285,6 +309,147 @@ def format_time(ms: int) -> str:
     minutes = seconds // 60
     seconds = seconds % 60
     return f"{minutes}:{seconds:02d}"
+
+
+#********************************************************************
+#MAKAM ROW - Spotify tarzi bar + text
+#********************************************************************
+
+class MakamRow(QWidget):
+    """
+    Bir makam icin yatay bar gosterici.
+    Arka planda %'ye gore dolu subtle kirmizi bar,
+    onunde sol: makam adi, sag: yuzde
+    """
+
+    SIZE_PRESETS = {
+        'big':    {'height': 52, 'font_size': 22, 'weight': 700,
+                   'left_pad': 16, 'bar_alpha_max': 90, 'radius': 10},
+        'medium': {'height': 42, 'font_size': 18, 'weight': 700,
+                   'left_pad': 14, 'bar_alpha_max': 80, 'radius': 8},
+        'small':  {'height': 28, 'font_size': 13, 'weight': 500,
+                   'left_pad': 14, 'bar_alpha_max': 45, 'radius': 6},
+    }
+
+    def __init__(self, label: str, prob: float, mode: str = 'medium', parent=None):
+        super().__init__(parent)
+        self.label_text = label
+        self.prob = max(0.0, min(1.0, prob))
+        self.mode = mode
+
+        cfg = self.SIZE_PRESETS[mode]
+        self.setFixedHeight(cfg['height'])
+        self._cfg = cfg
+
+        layout = QHBoxLayout(self)
+        layout.setContentsMargins(cfg['left_pad'], 0, cfg['left_pad'], 0)
+        layout.setSpacing(8)
+
+        #Makam adi
+        self.label_widget = QLabel(label)
+        if mode == 'small':
+            self.label_widget.setStyleSheet(
+                f"color: {COLORS['text_secondary']}; "
+                f"font-size: {cfg['font_size']}px; "
+                f"font-weight: {cfg['weight']};"
+            )
+        else:
+            self.label_widget.setStyleSheet(
+                f"color: {COLORS['text_primary']}; "
+                f"font-size: {cfg['font_size']}px; "
+                f"font-weight: {cfg['weight']};"
+            )
+        layout.addWidget(self.label_widget)
+        layout.addStretch()
+
+        #Yuzde
+        self.prob_widget = QLabel(f"%{prob * 100:.0f}")
+        if mode == 'small':
+            self.prob_widget.setStyleSheet(
+                f"color: {COLORS['text_secondary']}; "
+                f"font-size: {cfg['font_size']}px; "
+                f"font-weight: {cfg['weight']};"
+            )
+        else:
+            self.prob_widget.setStyleSheet(
+                f"color: {COLORS['accent']}; "
+                f"font-size: {cfg['font_size']}px; "
+                f"font-weight: {cfg['weight']};"
+            )
+        layout.addWidget(self.prob_widget)
+
+
+    def paintEvent(self, event):
+        """Arka planda olasiliga gore dolu kirmizi bar ciz"""
+        p = QPainter(self)
+        p.setRenderHint(QPainter.RenderHint.Antialiasing)
+
+        rect = self.rect()
+
+        #Bar genisligi - %'ye gore
+        bar_width = int(rect.width() * self.prob)
+        if bar_width < 4:
+            bar_width = 4  # minimum gosterim
+
+        #Arka plan bar
+        bar_color = QColor(COLORS['accent'])
+        bar_color.setAlpha(self._cfg['bar_alpha_max'])
+
+        p.setBrush(QBrush(bar_color))
+        p.setPen(Qt.PenStyle.NoPen)
+        p.drawRoundedRect(
+            QRectF(0, 0, bar_width, rect.height()),
+            self._cfg['radius'], self._cfg['radius']
+        )
+
+
+#********************************************************************
+#INFO ICON WIDGET
+#********************************************************************
+
+class InfoIcon(QLabel):
+    """Yuvarlak 'i' ikonu - hover'da tooltip"""
+
+    def __init__(self, tooltip_text: str, parent=None):
+        super().__init__("i", parent)
+        self.setFixedSize(20, 20)
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setCursor(Qt.CursorShape.WhatsThisCursor)
+        self.tooltip_text = tooltip_text
+        self.setStyleSheet(f"""
+            color: {COLORS['text_secondary']};
+            background-color: {COLORS['bg_tertiary']};
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            font-style: italic;
+        """)
+        self.setMouseTracking(True)
+
+    def enterEvent(self, event):
+        global_pos = self.mapToGlobal(self.rect().bottomRight())
+        QToolTip.showText(global_pos, self.tooltip_text, self)
+        self.setStyleSheet(f"""
+            color: {COLORS['text_primary']};
+            background-color: {COLORS['accent']};
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            font-style: italic;
+        """)
+        super().enterEvent(event)
+
+    def leaveEvent(self, event):
+        QToolTip.hideText()
+        self.setStyleSheet(f"""
+            color: {COLORS['text_secondary']};
+            background-color: {COLORS['bg_tertiary']};
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            font-style: italic;
+        """)
+        super().leaveEvent(event)
 
 
 #********************************************************************
@@ -302,13 +467,9 @@ class FeatureExtractionThread(QThread):
         self.audio_path = audio_path
         self._stop_requested = False
 
-    def request_stop(self):
-        self._stop_requested = True
-
     def run(self):
         try:
             self.status_updated.emit("Ses yükleniyor...")
-
             try:
                 y, sr = fx.load_audio(self.audio_path)
             except Exception as e:
@@ -335,13 +496,12 @@ class FeatureExtractionThread(QThread):
                 self.progress_updated.emit(idx + 1, n_segments)
 
             self.finished_success.emit(segment_images)
-
         except Exception as e:
             self.finished_error.emit(f"Hata: {e}")
 
 
 #********************************************************************
-#PREDICTION THREAD - artik raw segment_images alir
+#PREDICTION THREAD
 #********************************************************************
 
 class PredictionThread(QThread):
@@ -352,7 +512,7 @@ class PredictionThread(QThread):
 
     def __init__(self, segment_images, registry, parent=None):
         super().__init__(parent)
-        self.segment_images = segment_images   # raw uint8 list
+        self.segment_images = segment_images
         self.registry = registry
 
     def run(self):
@@ -362,7 +522,7 @@ class PredictionThread(QThread):
 
             for i, entry in enumerate(self.registry):
                 self.progress_updated.emit(i, total)
-                self.status_updated.emit(f"Tahmin: {entry.display_name}")
+                self.status_updated.emit(f"Tahmin: {entry.exp_label} ({entry.model_type})")
 
                 if not entry.is_loaded:
                     entry.load()
@@ -372,7 +532,6 @@ class PredictionThread(QThread):
                     continue
 
                 try:
-                    #Raw images -> entry kendi normalize yapar
                     result = entry.predict(self.segment_images)
                     results.append((entry, result))
                 except Exception as e:
@@ -382,9 +541,153 @@ class PredictionThread(QThread):
 
             self.progress_updated.emit(total, total)
             self.finished_success.emit(results)
-
         except Exception as e:
             self.finished_error.emit(f"Tahmin hatası: {e}")
+
+
+#********************************************************************
+#EXPERIMENT CARD - yeni bar-tarzi tasarim
+#********************************************************************
+
+class ExperimentCard(QFrame):
+
+    def __init__(self, exp_short: str, exp_label: str, results: list,
+                 is_featured: bool, class_list: list, parent=None):
+        super().__init__(parent)
+
+        self.is_featured = is_featured
+        self.expanded = is_featured
+        self.exp_label = exp_label
+        self.class_list = class_list
+
+        self.setObjectName("expCardFeatured" if is_featured else "expCardCollapsible")
+
+        outer = QVBoxLayout(self)
+        outer.setContentsMargins(0, 0, 0, 0)
+        outer.setSpacing(0)
+
+        #HEADER
+        self.header = QWidget()
+        self.header.setObjectName("expCardHeader")
+        if not is_featured:
+            self.header.setCursor(Qt.CursorShape.PointingHandCursor)
+
+        header_layout = QHBoxLayout(self.header)
+        header_layout.setContentsMargins(18, 14, 18, 14)
+        header_layout.setSpacing(10)
+
+        title_box = QVBoxLayout()
+        title_box.setContentsMargins(0, 0, 0, 0)
+        title_box.setSpacing(2)
+
+        if is_featured:
+            badge = QLabel("◆ ANA TAHMİN")
+            badge.setObjectName("expLabelFeatured")
+            title_box.addWidget(badge)
+
+            title_lbl = QLabel(exp_label)
+            title_lbl.setObjectName("expTitle")
+            title_box.addWidget(title_lbl)
+        else:
+            title_lbl = QLabel(exp_label)
+            title_lbl.setObjectName("expLabel")
+            title_box.addWidget(title_lbl)
+
+        header_layout.addLayout(title_box)
+        header_layout.addStretch()
+
+        info_icon = InfoIcon(self._build_class_tooltip())
+        header_layout.addWidget(info_icon)
+
+        if not is_featured:
+            self.chevron = QLabel("▾")
+            self.chevron.setObjectName("chevron")
+            header_layout.addWidget(self.chevron)
+            self.header.mousePressEvent = self._on_header_click
+
+        outer.addWidget(self.header)
+
+        #BODY
+        self.body = QWidget()
+        body_layout = QVBoxLayout(self.body)
+        body_layout.setContentsMargins(18, 0, 18, 16)
+        body_layout.setSpacing(0)
+
+        for i, (entry, result) in enumerate(results):
+            #Modeller arasi ayrac (ilk degilse)
+            if i > 0:
+                spacer = QWidget()
+                spacer.setFixedHeight(12)
+                body_layout.addWidget(spacer)
+
+                divider = QFrame()
+                divider.setFixedHeight(1)
+                divider.setStyleSheet(
+                    f"background-color: {COLORS['border']}; "
+                    f"border: none;"
+                )
+                body_layout.addWidget(divider)
+
+                spacer2 = QWidget()
+                spacer2.setFixedHeight(12)
+                body_layout.addWidget(spacer2)
+
+            #Model sonucu
+            self._add_model_section(body_layout, entry, result, is_featured)
+
+        outer.addWidget(self.body)
+
+        if not is_featured:
+            self.body.setVisible(False)
+
+
+    def _build_class_tooltip(self) -> str:
+        if not self.class_list:
+            return f"{self.exp_label} - sınıf listesi yüklenemedi"
+        lines = [f"{self.exp_label}", f"{len(self.class_list)} sınıf:", ""]
+        for cls in self.class_list:
+            lines.append(f"  •  {cls}")
+        return "\n".join(lines)
+
+
+    def _add_model_section(self, layout, entry, result, is_featured: bool):
+        """Bir model icin: ad + makam rowlari (bar tarzi)"""
+
+        #Model adi (kucuk subtitle)
+        name_label = QLabel(entry.display_name)
+        name_label.setObjectName("modelName")
+        layout.addWidget(name_label)
+
+        layout.addSpacing(8)
+
+        if result is None:
+            #Mevcut degil
+            err = entry.error_message or "Yüklenemedi"
+            msg = QLabel(f"⚠ {err[:80]}")
+            msg.setObjectName("unavailableText")
+            msg.setWordWrap(True)
+            layout.addWidget(msg)
+            return
+
+        #Top-1 row
+        top1 = result['top1']
+        top1_mode = 'big' if is_featured else 'medium'
+        top1_row = MakamRow(top1['label'], top1['prob'], mode=top1_mode)
+        layout.addWidget(top1_row)
+
+        #Top-2, Top-3 rows
+        if len(result['top3']) > 1:
+            layout.addSpacing(4)
+            for entry_top in result['top3'][1:]:
+                run_row = MakamRow(entry_top['label'], entry_top['prob'], mode='small')
+                layout.addWidget(run_row)
+
+
+    def _on_header_click(self, event):
+        self.expanded = not self.expanded
+        self.body.setVisible(self.expanded)
+        if hasattr(self, 'chevron'):
+            self.chevron.setText("▴" if self.expanded else "▾")
 
 
 #********************************************************************
@@ -392,7 +695,7 @@ class PredictionThread(QThread):
 #********************************************************************
 
 class VinylWidget(QWidget):
-    def __init__(self, size: int = 220, parent=None):
+    def __init__(self, size: int = 240, parent=None):
         super().__init__(parent)
         self._size = size
         self.setFixedSize(size, size)
@@ -619,7 +922,7 @@ class MakamGUI(QMainWindow):
         panel.setObjectName("card")
 
         layout = QVBoxLayout(panel)
-        layout.setContentsMargins(28, 24, 28, 24)
+        layout.setContentsMargins(28, 28, 28, 28)
         layout.setSpacing(0)
 
         title = QLabel("Müzik Çalar")
@@ -630,16 +933,16 @@ class MakamGUI(QMainWindow):
         subtitle.setObjectName("subtitle")
         layout.addWidget(subtitle)
 
-        layout.addSpacing(16)
+        layout.addSpacing(20)
 
         vinyl_row = QHBoxLayout()
         vinyl_row.addStretch()
-        self.vinyl = VinylWidget(size=220)
+        self.vinyl = VinylWidget(size=240)
         vinyl_row.addWidget(self.vinyl)
         vinyl_row.addStretch()
         layout.addLayout(vinyl_row)
 
-        layout.addSpacing(14)
+        layout.addSpacing(20)
 
         self.song_title_label = QLabel("Henüz dosya seçilmedi")
         self.song_title_label.setObjectName("emptyState")
@@ -653,16 +956,15 @@ class MakamGUI(QMainWindow):
 
         layout.addStretch()
 
-        progress_layout = QVBoxLayout()
-        progress_layout.setSpacing(4)
-        progress_layout.setContentsMargins(0, 0, 0, 0)
-
         self.progress_slider = QSlider(Qt.Orientation.Horizontal)
         self.progress_slider.setRange(0, 0)
         self.progress_slider.setEnabled(False)
-        progress_layout.addWidget(self.progress_slider)
+        layout.addWidget(self.progress_slider)
+
+        layout.addSpacing(4)
 
         time_row = QHBoxLayout()
+        time_row.setContentsMargins(0, 0, 0, 0)
         self.current_time_label = QLabel("0:00")
         self.current_time_label.setObjectName("timeLabel")
         self.total_time_label = QLabel("0:00")
@@ -671,13 +973,12 @@ class MakamGUI(QMainWindow):
         time_row.addWidget(self.current_time_label)
         time_row.addStretch()
         time_row.addWidget(self.total_time_label)
-        progress_layout.addLayout(time_row)
+        layout.addLayout(time_row)
 
-        layout.addLayout(progress_layout)
         layout.addSpacing(20)
 
         controls_row = QHBoxLayout()
-        controls_row.setSpacing(18)
+        controls_row.setSpacing(20)
         controls_row.addStretch()
 
         self.back_button = QPushButton()
@@ -689,8 +990,8 @@ class MakamGUI(QMainWindow):
 
         self.play_button = QPushButton()
         self.play_button.setObjectName("playButton")
-        self.play_button.setIcon(play_icon(34, "white"))
-        self.play_button.setIconSize(QSize(34, 34))
+        self.play_button.setIcon(play_icon(36, "white"))
+        self.play_button.setIconSize(QSize(36, 36))
         self.play_button.setEnabled(False)
         controls_row.addWidget(self.play_button)
 
@@ -716,7 +1017,7 @@ class MakamGUI(QMainWindow):
         self.volume_slider = QSlider(Qt.Orientation.Horizontal)
         self.volume_slider.setRange(0, 100)
         self.volume_slider.setValue(70)
-        self.volume_slider.setMaximumWidth(150)
+        self.volume_slider.setMaximumWidth(160)
         bottom_row.addWidget(self.volume_slider)
 
         bottom_row.addStretch()
@@ -740,14 +1041,14 @@ class MakamGUI(QMainWindow):
         panel.setObjectName("card")
 
         outer_layout = QVBoxLayout(panel)
-        outer_layout.setContentsMargins(28, 24, 28, 24)
+        outer_layout.setContentsMargins(28, 28, 28, 28)
         outer_layout.setSpacing(0)
 
         title = QLabel("Makam Tahmini")
         title.setObjectName("title")
         outer_layout.addWidget(title)
 
-        subtitle = QLabel("ResNet + Custom CNN, 3 deney")
+        subtitle = QLabel("4 deney • Ana tahmin + detaylı sonuçlar")
         subtitle.setObjectName("subtitle")
         outer_layout.addWidget(subtitle)
 
@@ -832,7 +1133,7 @@ class MakamGUI(QMainWindow):
 
         self.song_title_label.setText(display_name)
         self.song_title_label.setStyleSheet(
-            f"color: {COLORS['text_primary']}; font-size: 15px; "
+            f"color: {COLORS['text_primary']}; font-size: 16px; "
             f"font-weight: 600; font-style: normal;"
         )
         self.song_meta_label.setText(f"{file_ext}  •  {file_size_mb:.1f} MB")
@@ -886,14 +1187,11 @@ class MakamGUI(QMainWindow):
 
 
     def _on_extraction_done(self, segments: list):
-        """Ozellik cikarma bitti, tahmin baslat (raw images thread'e)"""
         self.segment_features = segments
-
         self.status_label.setText(f"{len(segments)} segment hazır, modeller çalışıyor")
         self.extraction_progress.setValue(0)
         self.progress_text.setText("Modeller yükleniyor")
 
-        #Raw images -> her model kendi normalize yapacak
         self.prediction_thread = PredictionThread(segments, self.registry)
         self.prediction_thread.progress_updated.connect(self._on_prediction_progress)
         self.prediction_thread.status_updated.connect(self._on_prediction_status)
@@ -929,12 +1227,51 @@ class MakamGUI(QMainWindow):
 
         self._clear_results()
 
+        groups = {}
+        order = []
+
         for entry, result in results:
-            if result is not None:
-                card = self._build_result_card(entry, result)
-            else:
-                card = self._build_unavailable_card(entry)
-            self.results_layout.addWidget(card)
+            if entry.exp_short not in groups:
+                groups[entry.exp_short] = {
+                    'label': entry.exp_label,
+                    'is_featured': entry.is_featured,
+                    'entries': [],
+                    'class_list': entry.get_class_list(),
+                }
+                order.append(entry.exp_short)
+            groups[entry.exp_short]['entries'].append((entry, result))
+
+        featured_first = [s for s in order if groups[s]['is_featured']]
+        others = [s for s in order if not groups[s]['is_featured']]
+
+        if featured_first:
+            for exp_short in featured_first:
+                g = groups[exp_short]
+                card = ExperimentCard(
+                    exp_short=exp_short, exp_label=g['label'],
+                    results=g['entries'], is_featured=True,
+                    class_list=g['class_list'],
+                )
+                self.results_layout.addWidget(card)
+
+        if others:
+            self.results_layout.addSpacing(8)
+            divider_label = QLabel("DETAYLI SONUÇLAR")
+            divider_label.setStyleSheet(
+                f"color: {COLORS['text_tertiary']}; "
+                f"font-size: 10px; font-weight: 600; letter-spacing: 0.8px;"
+            )
+            self.results_layout.addWidget(divider_label)
+            self.results_layout.addSpacing(2)
+
+            for exp_short in others:
+                g = groups[exp_short]
+                card = ExperimentCard(
+                    exp_short=exp_short, exp_label=g['label'],
+                    results=g['entries'], is_featured=False,
+                    class_list=g['class_list'],
+                )
+                self.results_layout.addWidget(card)
 
         self.results_layout.addStretch()
 
@@ -959,9 +1296,9 @@ class MakamGUI(QMainWindow):
         if text is None:
             text = (
                 "Bir müzik dosyası seçip\n'Tahmin Et' butonuna basın.\n\n"
-                "Sonuçlar 6 model için burada gösterilecek:\n"
-                "•  ResNet — 3 deney\n"
-                "•  Custom CNN — 3 deney"
+                "Sonuçlar:\n"
+                "•  Ana tahmin: 20 sınıflı genel CNN\n"
+                "•  Detaylı: 3 deney, her biri ResNet + CNN"
             )
         lbl = QLabel(text)
         lbl.setObjectName("placeholderText")
@@ -969,76 +1306,6 @@ class MakamGUI(QMainWindow):
         lbl.setAlignment(Qt.AlignmentFlag.AlignTop)
         self.results_layout.addWidget(lbl)
         self.results_layout.addStretch()
-
-
-    def _build_result_card(self, entry, result) -> QWidget:
-        card = QFrame()
-        card.setObjectName("resultCard")
-
-        layout = QVBoxLayout(card)
-        layout.setContentsMargins(16, 14, 16, 14)
-        layout.setSpacing(8)
-
-        name_label = QLabel(entry.display_name.upper())
-        name_label.setObjectName("modelName")
-        layout.addWidget(name_label)
-
-        top1 = result['top1']
-        top_row = QHBoxLayout()
-        top_row.setContentsMargins(0, 0, 0, 0)
-
-        makam_label = QLabel(top1['label'])
-        makam_label.setObjectName("topMakam")
-        top_row.addWidget(makam_label)
-        top_row.addStretch()
-
-        prob_label = QLabel(f"%{top1['prob'] * 100:.0f}")
-        prob_label.setObjectName("topProb")
-        top_row.addWidget(prob_label)
-
-        layout.addLayout(top_row)
-
-        if len(result['top3']) > 1:
-            layout.addSpacing(2)
-            for entry_top in result['top3'][1:]:
-                run_row = QHBoxLayout()
-                run_row.setContentsMargins(0, 0, 0, 0)
-
-                run_label = QLabel(entry_top['label'])
-                run_label.setObjectName("runnerUp")
-                run_row.addWidget(run_label)
-                run_row.addStretch()
-
-                run_prob = QLabel(f"%{entry_top['prob'] * 100:.0f}")
-                run_prob.setObjectName("runnerUpProb")
-                run_row.addWidget(run_prob)
-
-                layout.addLayout(run_row)
-
-        return card
-
-
-    def _build_unavailable_card(self, entry) -> QWidget:
-        card = QFrame()
-        card.setObjectName("resultCardUnavailable")
-
-        layout = QVBoxLayout(card)
-        layout.setContentsMargins(16, 14, 16, 14)
-        layout.setSpacing(6)
-
-        name_label = QLabel(entry.display_name.upper())
-        name_label.setObjectName("modelName")
-        layout.addWidget(name_label)
-
-        err = entry.error_message or "Yüklenemedi"
-        msg = f"⚠ {err[:80]}"
-
-        unavail_label = QLabel(msg)
-        unavail_label.setObjectName("unavailableText")
-        unavail_label.setWordWrap(True)
-        layout.addWidget(unavail_label)
-
-        return card
 
 
     def _toggle_play(self):
@@ -1076,10 +1343,10 @@ class MakamGUI(QMainWindow):
 
     def _on_state_changed(self, state):
         if state == QMediaPlayer.PlaybackState.PlayingState:
-            self.play_button.setIcon(pause_icon(34, "white"))
+            self.play_button.setIcon(pause_icon(36, "white"))
             self.vinyl.set_spinning(True)
         else:
-            self.play_button.setIcon(play_icon(34, "white"))
+            self.play_button.setIcon(play_icon(36, "white"))
             self.vinyl.set_spinning(False)
 
 

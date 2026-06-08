@@ -1,0 +1,24 @@
+{
+  "label_to_idx": {
+    "acemaşiran": 0,
+    "acemkürdi": 1,
+    "beyati": 2,
+    "buselik": 3,
+    "ferahnak": 4,
+    "hicaz": 5,
+    "hicazkar": 6,
+    "hüseyni": 7,
+    "hüzzam": 8,
+    "karcığar": 9,
+    "kürdilihicazkar": 10,
+    "mahur": 11,
+    "muhayyer": 12,
+    "neva": 13,
+    "nihavent": 14,
+    "rast": 15,
+    "saba": 16,
+    "segah": 17,
+    "suzinak": 18,
+    "uşşak": 19
+  }
+}
