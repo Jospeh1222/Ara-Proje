@@ -1,11 +1,3 @@
-"""
-Makam siniflandirma - model yukleme ve tahmin modulu
-
-V3.2:
-  - exp4: 20 sinif (genel), sadece CNN, "featured" (default expanded)
-  - exp1,2,3: 16/16/12 sinif, ResNet + CNN, "collapsible" (default kapali)
-"""
-
 import json
 from pathlib import Path
 import numpy as np
@@ -17,7 +9,7 @@ IMAGENET_MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 IMAGENET_STD  = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
 
-#********************************************************************
+#****************************************************************************************
 
 
 def _extract_state_dict(ckpt):
@@ -53,7 +45,7 @@ def _normalize_segments(segment_images: list, mean, std) -> torch.Tensor:
     return torch.from_numpy(arr.astype(np.float32))
 
 
-#********************************************************************
+#*******************************************************
 
 
 class ModelEntry:
@@ -95,7 +87,7 @@ class ModelEntry:
     def get_class_list(self) -> list:
         """Sinif isim listesi (info popup icin)"""
         if self.label_to_idx is None:
-            #Etiketleri yuklemek icin sadece dosyayi oku, modeli yukleme
+            #Etiketleri yuklemek icin sadece dosyayi oku
             try:
                 self._load_labels()
             except Exception:
@@ -222,11 +214,10 @@ class ModelEntry:
         }
 
 
-#********************************************************************
+#********************************************************************************
 
 
 def build_model_registry(experiments_dir) -> list:
-    """Model registry. exp4 'featured' (default expanded), digerleri collapsible."""
     experiments_dir = Path(experiments_dir)
 
     #(klasor, etiket, kisa, model_tipleri, featured)

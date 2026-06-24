@@ -1,5 +1,4 @@
 #Pretrained ResNet18 + makam siniflandirici head
-#VERSIYON C (FINAL): Sadece conv1+bn1+layer1+layer2 dondurulur
 #layer3 ve layer4 fine-tune edilir (layer3 dondurma overfit fix versiyonundaydi, kaldirildi)
 
 import torch

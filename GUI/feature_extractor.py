@@ -3,8 +3,8 @@ import librosa
 from PIL import Image
 
 
-#Egitim ile ayni parametreler (config_cnn.py'den)
-#************************************************************
+#parametreler
+#**************************************************
 SAMPLE_RATE        = 22050
 SEGMENT_SEC        = 30.0     #30 saniye
 SEGMENT_HOP_SEC    = 30.0     #ortusmesiz
@@ -18,7 +18,7 @@ BINS_PER_SEMITONE = 3
 N_CHROMA          = 12 * BINS_PER_SEMITONE   # 36
 
 IMG_SIZE = 224
-#************************************************************
+#*******************************************************************
 
 
 def _normalize_0_1(x: np.ndarray) -> np.ndarray:

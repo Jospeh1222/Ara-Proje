@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 
 from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout,
     QPushButton, QLabel, QSlider, QFileDialog, QFrame, QProgressBar,
     QScrollArea, QToolTip, QSizePolicy,
 )
@@ -311,24 +311,19 @@ def format_time(ms: int) -> str:
     return f"{minutes}:{seconds:02d}"
 
 
-#********************************************************************
+#**************************************************************************
 #MAKAM ROW - Spotify tarzi bar + text
-#********************************************************************
+#***************************************************************
 
 class MakamRow(QWidget):
-    """
-    Bir makam icin yatay bar gosterici.
-    Arka planda %'ye gore dolu subtle kirmizi bar,
-    onunde sol: makam adi, sag: yuzde
-    """
 
     SIZE_PRESETS = {
         'big':    {'height': 52, 'font_size': 22, 'weight': 700,
                    'left_pad': 16, 'bar_alpha_max': 90, 'radius': 10},
-        'medium': {'height': 42, 'font_size': 18, 'weight': 700,
-                   'left_pad': 14, 'bar_alpha_max': 80, 'radius': 8},
-        'small':  {'height': 28, 'font_size': 13, 'weight': 500,
-                   'left_pad': 14, 'bar_alpha_max': 45, 'radius': 6},
+        'medium': {'height': 40, 'font_size': 16, 'weight': 700,
+                   'left_pad': 12, 'bar_alpha_max': 80, 'radius': 7},
+        'small':  {'height': 26, 'font_size': 12, 'weight': 500,
+                   'left_pad': 12, 'bar_alpha_max': 45, 'radius': 5},
     }
 
     def __init__(self, label: str, prob: float, mode: str = 'medium', parent=None):
@@ -345,7 +340,6 @@ class MakamRow(QWidget):
         layout.setContentsMargins(cfg['left_pad'], 0, cfg['left_pad'], 0)
         layout.setSpacing(8)
 
-        #Makam adi
         self.label_widget = QLabel(label)
         if mode == 'small':
             self.label_widget.setStyleSheet(
@@ -362,7 +356,6 @@ class MakamRow(QWidget):
         layout.addWidget(self.label_widget)
         layout.addStretch()
 
-        #Yuzde
         self.prob_widget = QLabel(f"%{prob * 100:.0f}")
         if mode == 'small':
             self.prob_widget.setStyleSheet(
@@ -380,18 +373,14 @@ class MakamRow(QWidget):
 
 
     def paintEvent(self, event):
-        """Arka planda olasiliga gore dolu kirmizi bar ciz"""
         p = QPainter(self)
         p.setRenderHint(QPainter.RenderHint.Antialiasing)
 
         rect = self.rect()
-
-        #Bar genisligi - %'ye gore
         bar_width = int(rect.width() * self.prob)
         if bar_width < 4:
-            bar_width = 4  # minimum gosterim
+            bar_width = 4
 
-        #Arka plan bar
         bar_color = QColor(COLORS['accent'])
         bar_color.setAlpha(self._cfg['bar_alpha_max'])
 
@@ -403,12 +392,11 @@ class MakamRow(QWidget):
         )
 
 
-#********************************************************************
+#***************************************************************************
 #INFO ICON WIDGET
-#********************************************************************
+#****************************************************************
 
 class InfoIcon(QLabel):
-    """Yuvarlak 'i' ikonu - hover'da tooltip"""
 
     def __init__(self, tooltip_text: str, parent=None):
         super().__init__("i", parent)
@@ -452,9 +440,9 @@ class InfoIcon(QLabel):
         super().leaveEvent(event)
 
 
-#********************************************************************
-#FEATURE EXTRACTION THREAD
-#********************************************************************
+#************************************************************************
+#FEATURE EXTRACTION + PREDICTION THREADS
+#***************************************************************
 
 class FeatureExtractionThread(QThread):
     progress_updated = pyqtSignal(int, int)
@@ -465,7 +453,6 @@ class FeatureExtractionThread(QThread):
     def __init__(self, audio_path: str, parent=None):
         super().__init__(parent)
         self.audio_path = audio_path
-        self._stop_requested = False
 
     def run(self):
         try:
@@ -489,8 +476,6 @@ class FeatureExtractionThread(QThread):
 
             segment_images = []
             for idx, seg_y in fx.split_audio_to_segments(y, sr):
-                if self._stop_requested:
-                    return
                 rgb = fx.extract_segment_features(seg_y, sr)
                 segment_images.append(rgb)
                 self.progress_updated.emit(idx + 1, n_segments)
@@ -499,10 +484,6 @@ class FeatureExtractionThread(QThread):
         except Exception as e:
             self.finished_error.emit(f"Hata: {e}")
 
-
-#********************************************************************
-#PREDICTION THREAD
-#********************************************************************
 
 class PredictionThread(QThread):
     progress_updated = pyqtSignal(int, int)
@@ -545,8 +526,8 @@ class PredictionThread(QThread):
             self.finished_error.emit(f"Tahmin hatası: {e}")
 
 
-#********************************************************************
-#EXPERIMENT CARD - yeni bar-tarzi tasarim
+#*****************************************************************************
+#EXPERIMENT CARD
 #********************************************************************
 
 class ExperimentCard(QFrame):
@@ -561,6 +542,8 @@ class ExperimentCard(QFrame):
         self.class_list = class_list
 
         self.setObjectName("expCardFeatured" if is_featured else "expCardCollapsible")
+        #Grid'de kartlar genisleyebilsin
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
 
         outer = QVBoxLayout(self)
         outer.setContentsMargins(0, 0, 0, 0)
@@ -573,7 +556,7 @@ class ExperimentCard(QFrame):
             self.header.setCursor(Qt.CursorShape.PointingHandCursor)
 
         header_layout = QHBoxLayout(self.header)
-        header_layout.setContentsMargins(18, 14, 18, 14)
+        header_layout.setContentsMargins(16, 12, 16, 12)
         header_layout.setSpacing(10)
 
         title_box = QVBoxLayout()
@@ -610,29 +593,26 @@ class ExperimentCard(QFrame):
         #BODY
         self.body = QWidget()
         body_layout = QVBoxLayout(self.body)
-        body_layout.setContentsMargins(18, 0, 18, 16)
+        body_layout.setContentsMargins(16, 0, 16, 14)
         body_layout.setSpacing(0)
 
         for i, (entry, result) in enumerate(results):
-            #Modeller arasi ayrac (ilk degilse)
             if i > 0:
                 spacer = QWidget()
-                spacer.setFixedHeight(12)
+                spacer.setFixedHeight(10)
                 body_layout.addWidget(spacer)
 
                 divider = QFrame()
                 divider.setFixedHeight(1)
                 divider.setStyleSheet(
-                    f"background-color: {COLORS['border']}; "
-                    f"border: none;"
+                    f"background-color: {COLORS['border']}; border: none;"
                 )
                 body_layout.addWidget(divider)
 
                 spacer2 = QWidget()
-                spacer2.setFixedHeight(12)
+                spacer2.setFixedHeight(10)
                 body_layout.addWidget(spacer2)
 
-            #Model sonucu
             self._add_model_section(body_layout, entry, result, is_featured)
 
         outer.addWidget(self.body)
@@ -651,17 +631,13 @@ class ExperimentCard(QFrame):
 
 
     def _add_model_section(self, layout, entry, result, is_featured: bool):
-        """Bir model icin: ad + makam rowlari (bar tarzi)"""
-
-        #Model adi (kucuk subtitle)
         name_label = QLabel(entry.display_name)
         name_label.setObjectName("modelName")
         layout.addWidget(name_label)
 
-        layout.addSpacing(8)
+        layout.addSpacing(6)
 
         if result is None:
-            #Mevcut degil
             err = entry.error_message or "Yüklenemedi"
             msg = QLabel(f"⚠ {err[:80]}")
             msg.setObjectName("unavailableText")
@@ -669,15 +645,13 @@ class ExperimentCard(QFrame):
             layout.addWidget(msg)
             return
 
-        #Top-1 row
         top1 = result['top1']
         top1_mode = 'big' if is_featured else 'medium'
         top1_row = MakamRow(top1['label'], top1['prob'], mode=top1_mode)
         layout.addWidget(top1_row)
 
-        #Top-2, Top-3 rows
         if len(result['top3']) > 1:
-            layout.addSpacing(4)
+            layout.addSpacing(3)
             for entry_top in result['top3'][1:]:
                 run_row = MakamRow(entry_top['label'], entry_top['prob'], mode='small')
                 layout.addWidget(run_row)
@@ -690,9 +664,9 @@ class ExperimentCard(QFrame):
             self.chevron.setText("▴" if self.expanded else "▾")
 
 
-#********************************************************************
+#*******************************************************
 #VINYL WIDGET
-#********************************************************************
+#***************************************************************************
 
 class VinylWidget(QWidget):
     def __init__(self, size: int = 240, parent=None):
@@ -791,9 +765,9 @@ class VinylWidget(QWidget):
         p.end()
 
 
-#********************************************************************
+#*******************************************************************************
 #IKONLAR
-#********************************************************************
+#***************************************************************
 
 def _make_icon(size: int, color: str, draw_fn) -> QIcon:
     pixmap = QPixmap(size, size)
@@ -882,8 +856,9 @@ class MakamGUI(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Türk Sanat Müziği — Makam Sınıflandırma")
-        self.setMinimumSize(1000, 720)
-        self.resize(1100, 780)
+        #DAHA BUYUK PENCERE - sag panelde 2 kart yan yana sigsin
+        self.setMinimumSize(1200, 740)
+        self.resize(1400, 820)
 
         self.player = QMediaPlayer()
         self.audio_output = QAudioOutput()
@@ -911,10 +886,11 @@ class MakamGUI(QMainWindow):
         main_layout.setSpacing(16)
 
         left_panel = self._build_player_panel()
-        main_layout.addWidget(left_panel, stretch=3)
+        #ESIT GENISLIK - sol/sag 1:1
+        main_layout.addWidget(left_panel, stretch=1)
 
         right_panel = self._build_prediction_panel()
-        main_layout.addWidget(right_panel, stretch=2)
+        main_layout.addWidget(right_panel, stretch=1)
 
 
     def _build_player_panel(self) -> QWidget:
@@ -1227,6 +1203,7 @@ class MakamGUI(QMainWindow):
 
         self._clear_results()
 
+        #Sonuclari deney bazinda grupla
         groups = {}
         order = []
 
@@ -1244,6 +1221,7 @@ class MakamGUI(QMainWindow):
         featured_first = [s for s in order if groups[s]['is_featured']]
         others = [s for s in order if not groups[s]['is_featured']]
 
+        #FEATURED (exp4) - ust tarafta tam genislik
         if featured_first:
             for exp_short in featured_first:
                 g = groups[exp_short]
@@ -1254,6 +1232,7 @@ class MakamGUI(QMainWindow):
                 )
                 self.results_layout.addWidget(card)
 
+        #DETAYLI (exp1/2/3) - 2 kolonlu grid
         if others:
             self.results_layout.addSpacing(8)
             divider_label = QLabel("DETAYLI SONUÇLAR")
@@ -1264,14 +1243,27 @@ class MakamGUI(QMainWindow):
             self.results_layout.addWidget(divider_label)
             self.results_layout.addSpacing(2)
 
-            for exp_short in others:
+            #Grid container
+            grid_container = QWidget()
+            grid_layout = QGridLayout(grid_container)
+            grid_layout.setContentsMargins(0, 0, 0, 0)
+            grid_layout.setSpacing(10)
+            grid_layout.setColumnStretch(0, 1)
+            grid_layout.setColumnStretch(1, 1)
+
+            for i, exp_short in enumerate(others):
                 g = groups[exp_short]
                 card = ExperimentCard(
                     exp_short=exp_short, exp_label=g['label'],
                     results=g['entries'], is_featured=False,
                     class_list=g['class_list'],
                 )
-                self.results_layout.addWidget(card)
+                row = i // 2
+                col = i % 2
+                #Yukseklikler farkli olabilir, ustten hizala
+                grid_layout.addWidget(card, row, col, Qt.AlignmentFlag.AlignTop)
+
+            self.results_layout.addWidget(grid_container)
 
         self.results_layout.addStretch()
 
